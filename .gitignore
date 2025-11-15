@@ -21,3 +21,4 @@
 # Diretórios compilados
 build/
 dist/
+tmp/
