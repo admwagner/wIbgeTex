@@ -1,1 +1,835 @@
-%explicar como usar o pacote e gera o manual
+% !TEX TS-program = pdflatex
+% ===================================================================
+% LIVRO-BASE - Exemplo de uso do pacote 'wtexbase e wIbgeTex'.
+% ===================================================================
+
+% --- Classe do Documento ---
+\documentclass[11pt, oneside, brazilian]{memoir}
+
+% --- CARREGA AS CONFIGURAÇÕES DO NOSSO ARQUIVO DE ESTILO ---
+\usepackage{wtexbase}
+\usepackage{wIbgeTex}
+\usepackage{listings}
+% --- Configurações do Pacote listings ---
+% --- Configurações do Pacote listings ---
+\lstset{
+  language=TeX,                % Informa que o código é TeX
+  basicstyle=\ttfamily,        % Usa a fonte monoespaçada
+  breaklines=true,             % Quebra linhas longas automaticamente
+  frame=none,                  % Não adiciona moldura
+  showstringspaces=false,      % Não coloca símbolos feios nos espaços
+  inputencoding=utf8,
+  extendedchars=true,
+  literate={á}{{\'a}}1 {ã}{{\~a}}1 {à}{{\`a}}1 {â}{{\^a}}1
+           {é}{{\'e}}1 {ê}{{\^e}}1
+           {í}{{\'i}}1
+           {ó}{{\'o}}1 {õ}{{\~o}}1 {ô}{{\^o}}1
+           {ú}{{\'u}}1 {ü}{{\"u}}1
+           {ç}{{\c{c}}}1
+           {Á}{{\'A}}1 {Ã}{{\~A}}1 {À}{{\`A}}1 {Â}{{\^A}}1
+           {É}{{\'E}}1 {Ê}{{\^E}}1
+           {Í}{{\'I}}1
+           {Ó}{{\'O}}1 {Õ}{{\~O}}1 {Ô}{{\^O}}1
+           {Ú}{{\'U}}1 {Ü}{{\"U}}1
+           {Ç}{{\c{C}}}1
+           {–}{{\textendash}}1
+           {º}{{\textordmasculine}}1
+}
+
+% --- Arquivos de Conteúdo Externo ---
+
+\addbibresource{\HOMETEXW/Biblioteca/Atual/bib/2025-biblatex.bib}
+
+% --- INFORMAÇÕES ESPECÍFICAS DESTE LIVRO ---
+\title{Tentativas de Tabular IBGE}
+\author{Wagner Ferreira da Silva}
+\date{\the\year}
+
+
+
+% Glossário
+% \input{glossarioTeste.tex}
+
+% Para o PDF (sobrescreve as opções padrão se necessário)
+% \hypersetup{
+%     pdftitle={Normas Tabular IBGE},
+%     pdfauthor={Wagner Ferreira da Silva}
+% }
+
+% --- Para texto de exemplo ---
+\usepackage{lipsum}
+
+
+% 1. DEFINIÇÃO DO TAMANHO DO PAPEL 24 x 17
+% Define tamanho físico do papel
+\setstocksize{24cm}{17cm}
+% Define área de composição (texto)
+\settrimmedsize{24cm}{17cm}{*}
+% Margens e bloco de texto
+\setlrmarginsandblock{2cm}{2cm}{*} % esquerda/direita
+\setulmarginsandblock{2cm}{2cm}{*} % superior/inferior
+\checkandfixthelayout
+ 
+
+% ===================================================================
+% Início do documento
+% ===================================================================
+\begin{document}
+
+\frontmatter
+
+\begin{titlingpage}
+	\centering
+	\vspace*{\stretch{1}}
+	{\Large \scshape \theauthor}
+	\vfill
+	{\Huge \bfseries \thetitle}
+	\vfill
+	{\large \thedate}
+	\vspace*{\stretch{2}}
+\end{titlingpage}
+
+\cleardoublepage
+\tableofcontents
+
+
+% ---
+% inserir lista de ilustrações
+% ---
+% \cleardoublepage
+% \pdfbookmark[0]{\listfigurename}{lof}
+% \addcontentsline{toc}{chapter}{Lista de figuras}
+% \listoffigures*
+
+% ---
+% inserir lista de tabelas
+% ---
+\cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot}
+\addcontentsline{toc}{chapter}{Lista de tabelas}
+\listoftables*
+
+
+\cleardoublepage
+
+
+
+\mainmatter
+
+\chapter{Autoria e código LaTex}
+
+
+O texto e as tabelas destas anotações foram copiados ou adaptados da seguinte fonte: \fullcite{ibge-1993-tabular}.
+
+Este documento serve a um propósito estritamente técnico. É fundamental que o leitor tenha em mente os seguintes pontos:
+
+\begin{itemize}
+    \item \textbf{Objetivo:} A finalidade exclusiva deste trabalho é desenvolver e testar o código \LaTeX{} necessário para reproduzir os modelos de tabelas do IBGE, conforme exigido em trabalhos técnicos e acadêmicos.
+    
+   \item  \textbf{Foco na Formatação:} O foco foi na estrutura visual e na formatação do código e não na precisão do conteúdo textual ou numérico.
+    
+    \item \textbf{Aviso sobre os Dados:} Consequentemente, não houve conferência da digitação, em especial dos valores apresentados nas tabelas. Os dados devem ser considerados fictícios, servindo apenas como modelos de teste, sem qualquer correspondência com a realidade.
+
+\end{itemize}
+ 
+\chapter{Guia de Utilização do Pacote \texttt{wIbgeTex}}
+
+Este capítulo serve como manual de utilização do pacote \texttt{wIbgeTex.sty}, desenvolvido a partir dos exemplos do manual do IBGE.
+
+Nos exemplos, o código \texttt{\string,} (\textit{thin space}) gera um pequeno espaço entre os números, substituindo o ponto utilizado como separador de milhar. Em alguns casos, a vírgula foi colocada entre chaves (como em \texttt{{,}}), a fim de evitar espaço desnecessário.
+
+
+\section{Carregamento e Dependências}
+
+Para formatar tabelas no padrão IBGE, basta carregar o pacote \texttt{wIbgeTex} no preâmbulo do seu documento, após a classe utilizada (ex.: \texttt{memoir} ou \texttt{abntex2}).
+
+\begin{quadroBase}[Carregamento do Pacote (Preâmbulo)]
+{\footnotesize
+\begin{verbatim}
+% Carrega o pacote (ex: \usepackage{wIbgeTex} ou \usepackage{../wIbgeTex})
+\usepackage{wIbgeTex}
+\end{verbatim}
+}
+\end{quadroBase}
+
+O pacote \texttt{wIbgeTex.sty} carrega automaticamente todas as dependências necessárias para o usuário, incluindo:
+
+\begin{itemize}
+\item \texttt{ctable} e \texttt{booktabs} (para a construção das molduras das tabelas);
+\item \texttt{tabularx} e \texttt{longtable} (para tabelas com largura flexível ou que se estendem por mais de uma página);
+\item \texttt{siunitx} (para formatação de números e ângulos);
+\item \texttt{tikz} (para símbolos gráficos);
+\item \texttt{caption} (para formatação das legendas);
+\item \texttt{xparse} e \texttt{etoolbox} (para comandos personalizados).
+\end{itemize}
+
+\textbf{Nota importante:} O pacote \textbf{não} carrega as fontes principais do documento. É necessário carregar, no preâmbulo, as fontes de sua escolha (como \texttt{XCharter} e \texttt{tgheros}). Por exemplo, o ajuste de fontes pode ser feito com:
+
+\begin{quadroBase}[Pacotes Essenciais (Preâmbulo)]
+{\footnotesize
+	\begin{verbatim}
+\usepackage{XCharter}             % fonte principal Charter 
+\usepackage[condensed]{tgheros}   % Fonte sans-serif 
+\usepackage{newpxmath}            % Matemática compatível
+	\end{verbatim}
+}
+\end{quadroBase}
+
+\section{Formatação Automática}
+
+Quando carregado, o pacote \texttt{wIbgeTex.sty} aplica automaticamente as seguintes regras de formatação do IBGE:
+
+\begin{itemize}
+\item \textbf{Fonte da Tabela:} aplica a fonte definida em \texttt{\string\wIbgeTabFont} (por padrão, \texttt{\string\sffamily\string\footnotesize}) a todos os ambientes \texttt{tabular}, \texttt{tabularx} e \texttt{longtable};
+\item \textbf{Legendas (Caption):} configura as legendas para o padrão IBGE, alinhadas à esquerda e com travessão (ex.: \textbf{Tabela 1 \textendash{} Título});
+\item \textbf{Espaçamento de Linha:} ajusta o espaçamento vertical (\texttt{\string\extrarowheight} e \texttt{\string\arraystretch}) para proporcionar maior legibilidade;
+\item \textbf{Bordas da Tabela:} remove os espaços verticais adicionais do \texttt{booktabs} (\texttt{\string\aboverulesep} e \texttt{\string\belowrulesep}), garantindo linhas mais próximas ao texto.
+\end{itemize}
+
+
+\section{Comandos Disponíveis}
+
+O pacote fornece um conjunto de comandos com o prefixo \texttt{wIbge} para padronizar a criação das tabelas pelo usuário.
+
+\subsection{Tipos de Coluna}
+
+O pacote disponibiliza os seguintes tipos de coluna personalizados para uso nos ambientes \texttt{ctable}, \texttt{tabularx}, \texttt{tabular} e \texttt{longtable}:
+
+\begin{itemize}
+    \item \textbf{Alinhados pela Base (tipo \texttt{b})}
+        \begin{itemize}
+            \item \texttt{L\{<largura>\}}: Coluna alinhada à esquerda (base);
+            \item \texttt{C\{<largura>\}}: Coluna centralizada (base);
+            \item \texttt{R\{<largura>\}}: Coluna alinhada à direita (base);
+        \end{itemize}
+        
+    \item \textbf{Alinhados ao Meio (tipo \texttt{m})}
+        \begin{itemize}
+            \item \texttt{E\{<largura>\}}: Coluna alinhada à esquerda (meio);
+            \item \texttt{M\{<largura>\}}: Coluna centralizada (meio);
+            \item \texttt{D\{<largura>\}}: Coluna alinhada à direita (meio);
+        \end{itemize}
+        
+    \item \textbf{Coluna Expansível (tipo \texttt{X})}
+         \begin{itemize}
+            \item \texttt{Y}: Uma coluna \texttt{X} (expansível) que alinha o texto à direita.
+         \end{itemize}
+\end{itemize}
+
+
+\subsection{Fontes e Notas de Rodapé}
+
+Estes comandos devem ser utilizados:
+\begin{itemize}
+    \item no bloco de notas (\texttt{\{\% notas ... \}}) do \texttt{ctable}, como ocorre na maior parte dos exemplos apresentados;
+    \item entre \texttt{\string\end{tabularx}} e \texttt{\string\end{table}}, como na \wautoref{tabIbge2};
+    \item ou após \texttt{\string\end{longtable}}, como na \wautoref{tabIbge3}.
+\end{itemize}
+
+\begin{quadroBase}[Comandos \texttt{\string\wIbgeFonte} e \texttt{\string\wIbgeNota}]
+{\footnotesize
+\begin{verbatim}
+{% notas
+  % --- Comando para a Fonte ---
+  % O rótulo ``Fonte:'' é o padrão.
+  \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e 
+             Estatística (IBGE)}
+
+  % --- Comando para Notas ---
+  % O rótulo ``Nota:'' é o padrão.
+  \wIbgeNota{Esta é uma nota geral.}
+  
+  % --- Para rótulos personalizados (ex: ``Fontes'' ou ``Notas'') ---
+  \wIbgeFonte[Fontes]{IBGE e Ministério X.}
+  \wIbgeNota[Notas]{Esta é a nota 1. \par Esta é a nota 2.}
+}
+\end{verbatim}
+}
+\end{quadroBase}
+
+Observe que, em todos os exemplos do manual do IBGE, as tabelas ocupam toda a largura disponível. Assim, ambos os comandos foram programados para garantir o alinhamento perfeito à esquerda, mesmo quando os rótulos (Fonte, Fontes, Nota, Notas) apresentam larguras diferentes. Esse aspecto pode ser observado na \wautoref{tabIbge1}, que, em tese, poderia ter largura menor.
+
+
+
+\subsection{Sinais Convencionais}\label{secaoComandoSinalConvencional}
+Para padronizar a lista de sinais convencionais, utilize o comando \texttt{\string\wIbgeSinaisConvencionais}. Ele aceita uma lista de chaves (os próprios símbolos) separadas por vírgula e trata automaticamente da pluralização do título (“Sinal” ou “Sinais”).
+
+\begin{quadroBase}[Comando \texttt{\string\wIbgeSinaisConvencionais}]
+{\footnotesize
+\begin{verbatim}
+% Exemplo para Tabela 14:
+\wIbgeNota{
+  \wIbgeSinaisConvencionais{x, -}
+}
+
+% Exemplo para Tabela 3 (com outros textos):
+\wIbgeNota[Notas]{Dados numéricos arredondados. \par 
+  \wIbgeSinaisConvencionais{0.00, -0.00}
+}
+\end{verbatim}
+}
+\end{quadroBase}
+
+As chaves disponíveis e as suas descrições correspondentes (conforme definido no \texttt{wIbgeTex.sty}) são:
+
+\noindent
+\begin{tabularx}{\linewidth}{lX}
+	\toprule
+	\textbf{Chave} & \textbf{Descrição gerada}                                                      \\
+	\midrule
+	\textbf{-}     & Dado numérico igual a zero não resultante de arredondamento;              \\
+	\textbf{..}    & Dado numérico não se aplica;                                              \\
+	\textbf{...}   & Dado numérico não disponível;                                             \\
+	\textbf{x}     & Dado numérico omitido a fim de evitar a individualização da informação;   \\[4pt]
+
+  \makecell[l]{%
+    \begin{tabular}{@{}l@{\hspace{1em}}r@{}}
+      \textbf{0}    & \wIbgeTikzmark{A1} \\
+      \textbf{0,0}  & \\
+      \textbf{0,00} & \wIbgeTikzmark{A2}
+    \end{tabular}%
+  } &
+  Dado numérico igual a zero resultante do arredondamento de um dado originalmente positivo; \\[6pt]
+
+  \makecell[l]{%
+    \begin{tabular}{@{}l@{\hspace{1em}}r@{}}
+      \textbf{-0}    & \wIbgeTikzmark{B1} \\
+      \textbf{-0,0}  & \\
+      \textbf{-0,00} & \wIbgeTikzmark{B2}
+    \end{tabular}%
+  } &
+  Dado numérico igual a zero resultante do arredondamento de um dado originalmente negativo. \\
+  \bottomrule
+\end{tabularx}
+
+% desenha as chaves (após a tabela)
+\wIbgeDrawbrace{A1}{A2}
+\wIbgeDrawbrace{B1}{B2}
+
+
+\subsection{Símbolos e Coordenadas}
+
+\begin{itemize}
+  \item \textbf{Símbolos de intervalo:} para uso em texto corrente, o pacote fornece os comandos \texttt{\string\wIbgeVdash} ($w \wIbgeVdash z$), \texttt{\string\wIbgeDashv} ($w \wIbgeDashv z$) e \texttt{\string\wIbgeVdashDashv} ($w \wIbgeVdashDashv z$);
+  
+\item \textbf{Coordenadas:} o pacote carrega e configura o \texttt{siunitx}. Use o comando \texttt{\string\ang{}} para formatar coordenadas. O \texttt{siunitx} detecta automaticamente a fonte utilizada (\texttt{\string\wIbgeTabFont}) na tabela.
+
+\end{itemize}
+
+\begin{quadroBase}[Uso de \texttt{\string\ang} (siunitx)]
+{\footnotesize
+\begin{verbatim}
+% No seu .tex:
+Pico da Neblina & ... & \ang{+00;47;49} & \ang{-66;00;22} \\
+
+% Resultado (em fonte sans-serif pequena):
++00°47'49"   -66°00'22"
+\end{verbatim}
+}
+\end{quadroBase}
+
+
+\section{Customização Avançada}
+
+
+Se necessário alterar a fonte padrão das tabelas, é possível redefinir os seguintes comandos no preâmbulo do documento, \textbf{após} o carregamento do \texttt{wIbgeTex.sty}:
+
+
+\begin{quadroBase}[Customização de Fontes (Preâmbulo)]
+{\footnotesize
+\begin{verbatim}
+\usepackage{wIbgeTex}
+
+% Exemplo: Mudar a fonte de todas as tabelas para \small
+\renewcommand{\wIbgeTabFont}{\sffamily\small}
+\renewcommand{\wIbgeNoteFont}{\sffamily\small}
+\end{verbatim}
+}
+\end{quadroBase}
+
+
+\chapter{Princípios de Elaboração de Tabelas (IBGE)}
+
+Este capítulo resume os principais componentes de uma tabela, conforme as normas do IBGE \cite{ibge-1993-tabular}.
+
+
+
+\section{Numeração}
+Se um documento contiver duas ou mais tabelas, estas devem ser numeradas sequencialmente.
+
+\begin{itemize}
+    \item Use algarismos arábicos 
+    (ex: \textbf{Tabela 1} e \textbf{Tabela 2}).
+    \item A numeração pode ser contínua ou vinculada ao capítulo 
+    (ex: \textbf{Tabela 1.1}).
+\item A referência a esta regra pode ser encontrada na ABNT NBR 14724.
+\end{itemize}
+
+Vide modelo em \wautoreftabappendix{tabIbge1}{anexoTabelas}.
+
+
+\section{Título}
+O título é obrigatório e deve ser posicionado no topo da tabela. Sua função é descrever o \textbf{quê} (natureza), \textbf{onde} (abrangência geográfica) e \textbf{quando} (abrangência temporal) os dados foram observados.
+
+
+\begin{itemize}
+    \item \textbf{Clareza:} O título deve ser claro, conciso e escrito por extenso, sem abreviações.
+    \item \textbf{Natureza dos Dados:} Se a tabela contiver apenas números absolutos, é dispensável indicar ``em números absolutos'' no título.
+    \item \textbf{Abrangência Temporal:} Deve ser clara, indicando o ponto no tempo ou o período da série. Consulte o \wautoref{cap5IBGE} para detalhes.
+\end{itemize}
+
+
+\textbf{Exemplos:}
+
+\begin{itemize}
+	\setlength{\labelsep}{0pt}
+	\renewcommand{\labelitemi}{}
+	\item Produção acumulada de casulos do bicho-da-seda dos estabelecimentos, por Unidade da Federação, no período 1980--1990, Brasil;
+	\item Produção de casulos do bicho-da-seda, em números absolutos e relativos, por Unidade da Federação -- Brasil -- 1974;
+	\item Produção média de casulos do bicho-da-seda dos estabelecimentos, por Unidade da Federação -- Brasil -- 1974;
+	\item Pessoas empregadas em atividades agrícolas, por grupo de horas semanais trabalhadas e classe de remuneração mensal -- Brasil -- 1976;
+
+	\item Números-índices mensais de preços mínimos, acumulados em 12 meses, de frutas cítricas da Região Metropolitana de Curitiba -- 1990--1991;
+	\item Mortes registradas de 1956 a 1964 que ocorreram entre 1951 e 1964, Japão;
+
+	\item Produção de casulos do bicho-da-seda, por Unidade da Federação -- Brasil -- 1974.
+\end{itemize}
+
+
+\subsection{Moldura}
+A moldura define a estrutura da tabela.
+\begin{itemize}
+    \item A tabela não deve ter linhas verticais externas (à esquerda ou à direita).
+    \item Deve conter, no mínimo, três linhas horizontais: uma no topo (acima do cabeçalho), uma abaixo do cabeçalho e uma no rodapé (fechando a tabela).
+    \item Linhas verticais ou horizontais internas (\texttt{\string\cmidrule} ou \texttt{|}) podem ser empregadas para destacar ou separar informações complexas no cabeçalho ou no corpo.
+\end{itemize}
+
+
+\textbf{Exemplo:} \autorefanexo{anexoTabelas}, \wautorefLista{tabIbge3,tabIbge5,tabIbge6,tabIbge7,tabIbge9,tabIbge10,tabIbge11,tabIbge12,tabIbge14,tabIbge15}. 
+
+
+\subsection{Cabeçalho}
+O cabeçalho (topo da tabela) especifica o conteúdo de cada coluna, complementando as informações do título. Deve ser claro e, preferencialmente, escrito por extenso.
+
+\subsection{Indicador de Linha}
+
+Refere-se ao conteúdo da primeira coluna (ou colunas) da tabela, que descreve cada linha da tabela.
+
+
+\subsection{Unidade de Medida}
+A unidade de medida deve ser indicada (geralmente entre parênteses) no cabeçalho ou no indicador de linha.
+
+
+\textbf{Exemplo:} \autorefanexo{anexoTabelas},
+\wautorefLista{tabIbge3,tabIbge4,tabIbge7,tabIbge8,tabIbge9,tabIbge10,tabIbge12,tabIbge13,tabIbge14,tabIbge15}.
+
+
+\textbf{Exemplos:}
+(m) ou (metro); (t) ou (tonelada); (R\$) ou (real); (t/km) ou (toneladas por quilômetro); (hab/km\textsuperscript{2}) ou (habitantes por quilômetro quadrado).
+
+
+
+
+\textbf{Exemplos:}
+
+\begin{itemize}
+	\setlength{\labelsep}{0pt}
+	\renewcommand{\labelitemi}{}
+	\item (1~000~t) ou (1000~t) --- indica dados numéricos em toneladas que foram divididos por mil;
+	\item (1~000~R\$) ou (1000~R\$) --- indica dados numéricos em reais que foram divididos por mil;
+	\item (\%) ou (percentual) --- indica dados numéricos proporcionais a cem;
+	\item (\textperthousand) ou (por mil) --- indica dados numéricos proporcionais a mil;
+	\item (1/1000) --- indica dados numéricos que foram divididos por 1/1000, ou seja, multiplicados por mil.
+\end{itemize}
+
+
+
+\subsection{Dado numérico}
+
+Os dados devem ser apresentados em algarismos arábicos. A grafia (ex.: o uso da vírgula como separador decimal) deve seguir as normas do CONMETRO.
+
+
+
+\subsection{Sinal convencional}\label{secaoSinalConvecional}
+
+
+Sinais são usados para substituir dados numéricos ausentes ou indisponíveis. Quando empregados, devem ser explicados em nota geral. O pacote \texttt{wIbgeTex} fornece o comando \texttt{\string\wIbgeSinaisConvencionais} para padronizar essa explicação (consulte as \wautoref{tabGuia-sinais-conv} e \wautoref{secaoComandoSinalConvencional}).
+
+
+
+\noindent\begin{table}[htb]
+\caption{Sinais convencionais e seus significados}\label{tabGuia-sinais-conv}
+\begin{tabularx}{\linewidth}{lX}
+	\toprule
+	\textbf{Sinal} & \textbf{Significado}                                                      \\
+	\midrule
+	\textbf{--}     & Dado numérico igual a zero não resultante de arredondamento;              \\
+	\textbf{..}    & Dado numérico não se aplica;                                              \\
+	\textbf{...}   & Dado numérico não disponível;                                             \\
+	\textbf{x}     & Dado numérico omitido a fim de evitar a individualização da informação;   \\[4pt]
+
+    \makecell[l]{%
+    \begin{tabular}{@{}l@{\hspace{1em}}r@{}}
+      \textbf{0}    & \wIbgeTikzmark{A1} \\
+      \textbf{0,0}  & \\
+      \textbf{0,00} & \\
+      \textbf{etc.} & \wIbgeTikzmark{A2}
+    \end{tabular}%
+  } &
+  Dado numérico igual a zero resultante do arredondamento de um dado originalmente positivo; \\[6pt]
+
+  \makecell[l]{%
+    \begin{tabular}{@{}l@{\hspace{1em}}r@{}}
+      \textbf{-0}    & \wIbgeTikzmark{B1} \\
+      \textbf{-0,0}  & \\
+      \textbf{-0,00} & \\
+      \textbf{etc.} & \wIbgeTikzmark{B2}
+    \end{tabular}%
+  } &
+  Dado numérico igual a zero resultante do arredondamento de um dado originalmente negativo. \\
+  \bottomrule
+\end{tabularx}
+\end{table}
+
+% desenha as chaves (após a tabela)
+\wIbgeDrawbrace{A1}{A2}
+\wIbgeDrawbrace{B1}{B2}
+
+
+
+
+\textbf{Exemplo:}\autorefanexo{anexoTabelas},
+\wautorefLista{tabIbge2,tabIbge3,tabIbge4,tabIbge10,tabIbge12,tabIbge13,tabIbge14}.
+
+\textit{Nota:} No caso de publicação que contenha tabelas com sinais convencionais, em que a apresentação dos sinais e de seus significados figure em destaque, é dispensável a nota geral em cada tabela.
+
+
+\subsection{Chamada, Fonte e Notas}
+\begin{itemize}
+    \item \textbf{Chamada:} É um símbolo (normalmente um número entre parênteses) usado no corpo da tabela (com \texttt{\string\tmark}) (do pacote \texttt{ctable}) para remeter a uma nota específica.
+\item \textbf{Nota Específica:} Esclarece um ponto específico marcado por uma ``chamada''. Use o comando \texttt{\string\tnote} (do pacote \texttt{ctable}).
+
+    \item \textbf{Fonte:} Indica a origem dos dados. É um elemento obrigatório e deve ser inserido no rodapé da tabela. Use o comando \texttt{\string\wIbgeFonte}.
+    \item \textbf{Nota Geral:} Esclarece o conteúdo geral da tabela ou o uso de sinais. Use o comando \texttt{\string\wIbgeNota}.
+   
+\end{itemize}
+
+\textbf{Exemplos de Notas:}\autorefanexo{anexoTabelas},
+\wautorefLista{tabIbge2,tabIbge3,tabIbge4,tabIbge5,tabIbge8,tabIbge10,tabIbge11,tabIbge12,tabIbge13,tabIbge14,tabIbge15}.
+
+
+\chapter{Apresentação de Tempo e Períodos}\label{cap5IBGE}
+
+A formatação de datas e períodos deve ser precisa e desprovida de ambiguidades.
+
+\begin{itemize}
+    \item \textbf{Séries consecutivas:} utilize hífen (ou travessão \textendash{}) para ligar o ponto inicial ao ponto final. Exemplo: \textbf{1981--1985} (inclui todos os anos de 1981 a 1985).
+    \item \textbf{Séries não consecutivas:} utilize barra (/) para delimitar os pontos. Exemplo: \textbf{1981/1985} (inclui apenas os anos de 1981 e 1985). Quando houver poucos pontos, podem ser usadas vírgulas, como em \textbf{1988, 1990, 1991}.
+    \item \textbf{Safras:} utilize barra entre os dois últimos algarismos dos anos. Exemplo: \textbf{Safra 91/92}.
+\end{itemize}
+
+Quando a tabela contiver dados numéricos referentes a um período anual distinto do ano civil, essa informação deve ser indicada no título, em nota geral ou em nota específica.
+
+
+
+\chapter{Apresentação de classe de frequência}
+
+
+
+Classes de frequência (intervalos numéricos) devem ser apresentadas de forma não ambígua. O pacote \texttt{wIbgeTex} fornece comandos para os símbolos de intervalo padrão:
+
+\begin{itemize}
+    \item \textbf{Inclui o início, exclui o fim} ($w$ a menos de $z$): Utilize \texttt{\string\wIbgeVdash}. Ex.: $w \wIbgeVdash z$.
+    \item \textbf{Exclui o início, inclui o fim} (mais de $w$ a $z$): Utilize \texttt{\string\wIbgeDashv}. Ex.: $w \wIbgeDashv z$.
+    \item \textbf{Inclui ambos os extremos} ($w$ a $z$): Utilize \texttt{\string\wIbgeVdashDashv}. Ex.: $w \wIbgeVdashDashv z$.
+\end{itemize}
+
+Recomenda-se evitar classes abertas (como ``menos de $z$'' ou ``$w$ ou mais'') e adotar classes inicial e final fechadas na distribuição de frequência. Devem-se evitar expressões como “até~$z$”, “menos de~$z$”, “$w$~ou~mais” e “mais de~$w$”.
+
+\textbf{Exemplo:} \autorefanexo{anexoTabelas}, \wautorefLista{tabIbge8,tabIbge9,tabIbge10,tabIbge12}.
+
+
+\chapter{Arredondamento de dado numérico}
+
+Se os dados forem arredondados, essa informação deve ser indicada em nota.
+
+O arredondamento dos dados numéricos deve respeitar as diferenças significativas, absolutas e relativas, existentes entre eles.
+
+\textbf{Exemplo:} \autorefanexo{anexoTabelas}, \wautorefLista{tabIbge3}.
+
+ 
+Quando, em uma tabela, após o arredondamento dos dados numéricos, houver divergência entre a soma das parcelas arredondadas e o total arredondado, deve-se adotar um dos seguintes procedimentos:
+
+\begin{enumerate}[label=\alph*)]
+	\item Inclusão de uma nota geral esclarecendo a divergência;
+
+	\item Correção na parcela (ou parcelas) cujo valor absoluto da razão entre a diferença de arredondamento (dado numérico original menos dado corrigido) e o dado numérico original seja menor.
+\end{enumerate}
+
+\textbf{Exemplo:}
+
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		\textbf{Dado numérico original} & \textbf{Dado numérico arredondado} \\
+		\midrule
+		7{,}6                           & 8                                  \\
+		11{,}6                          & 12                                 \\
+		20{,}2                          & 20                                 \\
+		\midrule
+		\textbf{Total}                  & \textbf{39}                        \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+Porém, a soma das parcelas arredondadas resulta em:
+\[
+	8 + 12 + 20 = 40
+\]
+
+\textbf{Soluções possíveis:}
+
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		\textbf{Solução} & \textbf{Parcela ajustada} & \textbf{Total corrigido} \\
+		\midrule
+		1                & $7 + 12 + 20$             & 39                       \\
+		2                & $8 + 11 + 20$             & 39                       \\
+		3                & $8 + 12 + 19$             & 39                       \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+\textbf{Cálculo da razão:}
+
+\[
+	\begin{aligned}
+		(7{,}6 - 7) / 7{,}6    & = 0{,}079; \\
+		(11{,}6 - 11) / 11{,}6 & = 0{,}052; \\
+		(20{,}2 - 19) / 20{,}2 & = 0{,}059.
+	\end{aligned}
+\]
+
+Como $0{,}052 < 0{,}059 < 0{,}079$, a solução recomendada é a \textbf{nº 2}, isto é:
+
+
+\begin{center}
+	\begin{tabular}{cc}
+		\toprule
+		\textbf{Dado numérico corrigido} & \textbf{Valor adotado} \\
+		\midrule
+		7{,}6                            & 8                      \\
+		11{,}6                           & 11                     \\
+		20{,}2                           & 20                     \\
+		\midrule
+		\textbf{Total}                   & 39                     \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+
+Quando, em uma tabela, após o arredondamento de um dado numérico, o resultado for $0$, $0{,}0$, $0{,}00$ e assim por diante, o resultado deve ser apresentado como $0$ ou $-0$; $0{,}0$ ou $-0{,}0$; $0{,}00$ ou $-0{,}00$, conservando-se o sinal do dado numérico original. Essa distinção evita confusão com o dado numérico igual a zero, representado por outro sinal convencional conforme a \wautoref{secaoSinalConvecional}.
+
+\textbf{Exemplo:} \autorefanexo{anexoTabelas}, \wautorefLista{tabIbge3}.
+
+
+\chapter{Diagramação e Recomendações Gerais}
+
+\begin{itemize}
+   
+   \item  \textbf{Quebra de tabelas:} se uma tabela for extensa, ela deve ser dividida. O cabeçalho deve ser repetido em cada nova página. O \texttt{longtable} (usado na \wautoref{tabIbge3}) realiza essa operação automaticamente.
+
+    
+    \item \textbf{Quebra horizontal:} tabelas com muitas colunas e poucas linhas podem ser divididas em blocos, um abaixo do outro, repetindo-se os indicadores de linha (ex.: \wautorefLista{tabIbge2,tabIbge4}).
+    
+    \item \textbf{Quebra lado a lado:} tabelas com poucas colunas e muitas linhas podem ser diagramadas lado a lado na mesma página (ex.: \wautorefLista{tabIbge3,tabIbge6}).
+    
+    \item \textbf{Clareza:} procure fazer a tabela caber em uma única página. Evite o excesso de células com sinais convencionais, preferindo dados numéricos, e mantenha a uniformidade gráfica entre todas as tabelas.
+   
+\end{itemize}
+
+
+\backmatter  % parte não textual
+
+
+
+%=========================================================
+% ANEXOS
+%=========================================================
+\begin{anexosenv}
+	\chapter{Exemplos de tabelas}\label{anexoTabelas}
+
+
+  % --- Importa a Tabela 1 ---
+	\input{tabelas/tabela-01-modelo.tex}
+
+  \begin{quadroBase}[Código Tabela 1]
+  {\footnotesize
+    \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-01-modelo.tex} 
+  }
+  \end{quadroBase}
+ 
+% --- Importa a Tabela 2 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-02-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 2]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-02-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 3 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-03-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 3]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-03-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 4 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-04-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 4]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-04-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 5 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-05-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 5]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-05-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 6 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-06-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 6]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-06-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 7 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-07-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 7]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-07-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 8 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-08-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 8]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-08-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 9 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-09-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 9]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-09-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 10 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-10-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 10]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-10-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 11 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-11-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 11]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-11-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 12 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-12-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 12]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-12-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 13 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-13-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 13]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-13-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 14 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-14-modelo.tex}
+
+\begin{quadroBase}[Código Tabela 14]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-14-modelo.tex} 
+}
+\end{quadroBase}
+
+% --- Importa a Tabela 15 ---
+\clearpage
+\input{../exemplo/tabelas/tabela-15-modelo.tex}
+\newpage
+\begin{quadroBase}[Código Tabela 15]
+{\footnotesize
+  \lstinputlisting[firstline=8]{../exemplo/tabelas/tabela-15-modelo.tex} 
+}
+\end{quadroBase}
+
+	%%
+	%%
+\end{anexosenv}
+
+
+
+
+\printbibliography[title={Referências}, heading=bibintoc]
+
+%\phantomsection
+%\printglossaries
+
+%\cleardoublepage
+%\phantomsection
+%\printindex
+
+\end{document}

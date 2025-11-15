@@ -1,2 +1,44 @@
-% data: 
-% tags: 
+% Tabela Modelo 5
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  label = tabIbge5,
+  caption = {Taxa de desemprego aberto (1), por Região Metropolitana, ano e mês de investigação -- Brasil -- janeiro de 1991 a maio de 1992}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X r r r r r r } %  Definição das colunas
+{% notas
+  \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e Estatística -- Pesquisa Mensal de Emprego.}
+  \wIbgeNoteFont % Define a fonte para \tnote 
+  \tnote[(1)]{Percentual de pessoas de 15 anos ou mais de idade procurando trabalho, em relação às pessoas de 15 anos ou mais de idade economicamente ativas, na semana de referência.}
+}
+{ % conteúdo da tabela
+  \FL
+  \multirow{2}{*}{Ano e mês} & \multicolumn{6}{|c}{Região Metropolitana} \\ \cmidrule{2-7}
+  & \multicolumn{1}{|c}{Recife} & \multicolumn{1}{|c}{Salvador} & \multicolumn{1}{|C{13mm}}{Belo Horizonte} & \multicolumn{1}{|C{10mm}}{Rio de Janeiro} & \multicolumn{1}{|C{10mm}}{São Paulo} & \multicolumn{1}{|C{10mm}}{Porto Alegre} \ML
+
+  \multicolumn{7}{l}{\textbf{1991}} \\
+  Janeiro \dotfill   & 86,10 & 5,43 & 4,77 & 4,24 & 5,91 & 4,56 \\
+  Fevereiro \dotfill & 6,44  & 5,18 & 5,00 & 3,81 & 6,37 & 5,48 \\
+  Março  \dotfill    & 6,33  & 5,76 & 5,06 & 4,24 & 7,22 & 5,14 \\
+  Abril  \dotfill    & 6,67  & 6,06 & 4,47 & 4,13 & 6,93 & 5,44 \\
+  Maio   \dotfill    & 6,21  & 7,26 & 4,61 & 4,54 & 6,49 & 5,04 \\
+  Junho  \dotfill    & 5,30  & 6,43 & 4,31 & 3,63 & 5,61 & 3,90 \\
+  Julho  \dotfill    & 4,46  & 6,52 & 3,18 & 2,55 & 4,34 & 3,15 \\
+  Agosto  \dotfill   & 5,76  & 5,67 & 3,67 & 2,84 & 4,38 & 3,82 \\
+  Setembro \dotfill  & 7,05  & 6,22 & 3,63 & 3,38 & 4,43 & 4,03 \\
+  Outubro \dotfill   & 5,65  & 6,30 & 3,74 & 3,28 & 4,52 & 3,95 \\
+  Novembro \dotfill  & 6,06  & 4,83 & 3,70 & 3,40 & 5,03 & 4,28 \\
+  Dezembro  \dotfill & 4,72  & 5,23 & 3,15 & 3,04 & 4,98 & 3,33 \\
+  \addlinespace
+  \multicolumn{7}{l}{\textbf{1992}} \\
+  Janeiro \dotfill   & 6,13  & 5,54 & 3,95 & 3,60 & 5,78 & 3,63 \\
+  Fevereiro \dotfill & 8,35  & 6,38 & 5,76 & 4,43 & 7,58 & 5,43 \\
+  Março   \dotfill   & 8,59  & 7,16 & 5,09 & 4,09 & 7,24 & 6,25 \\
+  Abril  \dotfill    & 9,43  & 6,22 & 5,58 & 4,03 & 6,39 & 5,90 \\
+  Maio   \dotfill    & 10,17 & 7,25 & 5,69 & 4,71 & 7,10 & 6,23 \LL
+}

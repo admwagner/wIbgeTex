@@ -1,2 +1,58 @@
-% data: 
-% tags: 
+% Tabela Modelo 10
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{\SingleSpacing
+\ctable[
+  label = tabIbge10,
+  caption = {População de O a 11 meses de idade, por aleitamento materno, grupo de idade e classe de rendimento mensal familiar per capita Brasil -- 1989}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{L{28mm} R{12mm} R{12mm} R{12mm} R{12mm} R{12mm}  R{12mm}} %  Definição das colunas
+{% notas  
+  \wIbgeFonte[Fontes]{IBGE, Diretoria de Pesquisas, Departamento de Estatísticas e Indicadores Sociais - Instituto Nacional de Alimentação e Nutrição, Pesquisa Nacional de Saúde e Nutrição.}
+  \wIbgeNota{1 Exclui as pessoas cuja condição na família era pensionista, empregado doméstico ou parente do empregado doméstico. \par
+  2 Exclui a população da zona rural de RO, AC, AM, RR, PA AP \par
+  3 \wIbgeSinaisConvencionais{-}
+  }
+  \wIbgeNoteFont % Define a fonte para \tnote
+  \tnote[(1)]{ Inclui sem declaração de aleitamento materno.} 
+}
+{ % conteúdo da tabela (Parte 1)
+  \FL
+  \multicolumn{1}{C{28mm}}{\multirow{4}{*}{\parbox{28mm}{Classe de rendimento mensal familiar per capita (salário mínimo)}}} & \multicolumn{6}{|C{66mm}}{População 0 a 11 meses} \\ \cmidrule{2-7}
+
+& \multicolumn{1}{|c}{\multirow{3}{*}{Total \tmark[(1)]}}  & \multicolumn{5}{|c}{Amamentada} \\ \cmidrule{3-7}
+  & \multicolumn{1}{|c}{} & \multicolumn{1}{|c}{\multirow{2}{*}{Total}}  & \multicolumn{4}{|c}{Grupo de idade } \\ \cmidrule{4-7}
+   & \multicolumn{1}{|c}{}& \multicolumn{1}{|c}{}& \multicolumn{1}{|C{12mm}}{Menos de 1 mês} & 1 a 4 meses & 5 a 8 meses & 9 a 11 meses \ML
+
+   
+Até 1/4\dotfill & 406012 & 261275 & 23848 & 95133 & 65332 & 86962 \\
+Mais de 1/4 a 1/2 \dotfill& 615162 & 358192 & 42964 & 138560 & 101122 & 75546 \\
+Mais de 1/2 a 1 \dotfill& 727327 & 397544 & 51269 & 174828 & 86585 & 85062 \\
+Mais de 1 a 2 \dotfill& 622383 & 291112 & 37710 & 127929 & 49185 & 76288 \\
+Mais de 2 \dotfill& 560765 & 256331 & 31494 & 128274 & 67031 & 29532 \\
+Sem rendimento \dotfill& 266590 & 139138 & 36992 & 55752 & 35748 & 10646 \LL
+
+& \\
+
+% --- Repetição do Cabeçalho (Parte 2) ---
+\FL
+  \multicolumn{1}{C{28mm}}{\multirow{4}{*}{\parbox{28mm}{Classe de rendimento mensal familiar per capita (salário mínimo)}}} & \multicolumn{6}{|C{66mm}}{População 0 a 11 meses} \\ \cmidrule{2-6}
+
+&  \multicolumn{6}{|c}{Não-amamentada} \\ \cmidrule{2-6}
+   & \multicolumn{1}{|c}{\multirow{2}{*}{Total}}  & \multicolumn{4}{|c}{Grupo de idade } \\ \cmidrule{3-6}
+   & \multicolumn{1}{|c}{}& \multicolumn{1}{|C{12mm}}{Menos de 1 mês} & 1 a 4 meses & 5 a 8 meses & 9 a 11 meses \\ \cmidrule{1-6}
+
+Até 1/4 \dotfill & 144737 & 3889 & 28112 & 58297 & 54439 \\
+Mais de 1/4 a 1/2 \dotfill & 256970 & 2322 & 58162 & 110161 & 86325 \\
+Mais de 1/2 a 1 \dotfill & 329783 & 11394 & 82837 & 148709 & 86843 \\
+Mais de 1 a 2 \dotfill & 327463 & 13482 & 73666 & 125599 & 114716 \\
+Mais de 2 \dotfill & 300899 & - & 57296 & 106821 & 136782 \\
+Sem rendimento \dotfill & 127452 & 3820 & 31885 & 60075 & 31672 \LL
+  
+}
+}

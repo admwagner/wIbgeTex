@@ -1,2 +1,39 @@
-% data: 
-% tags: 
+% Tabela Modelo 8
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  label = tabIbge8,
+  caption = {Superfície total, em números absolutos e relativos, por zona hipsométrica do Brasil -- 1973}, 
+  width = \linewidth, center, pos = th, notespar, nosuper
+]
+{X R{30mm} R{30mm}} %  Definição das colunas
+{% notas
+  \wIbgeFonte{IBGE, Diretoria de Geociências, Departamento de Cartografia.}
+  \wIbgeNota{Dados sujeitos a retificação.}
+  \wIbgeNoteFont % Define a fonte para \tnote 
+  \tnote[(1)]{ Áreas de reservas ecológicas, conforme resolução n. 04 de 18.09.1985 do Conselho Nacional do Meio Ambiente,} 
+}
+{ % conteúdo da tabela
+  \FL
+  \multirow{2}{*}{Zona hipsométrica (m)} & \multicolumn{2}{c}{Superfície total} \\
+  &  Absoluta (km\textsuperscript{2}) & Relativa (\%)  \ML
+
+  \hspace{5mm} Total & 8 511 996 & 10 000 \\ \addlinespace
+  
+  Terras baixas & 3 489 553 & 4 100 \\
+  0 a 100 & 2 050 318 & 2 409 \\
+  101 a 200 & 1 439 235 & 1 691 \\ \addlinespace
+  
+  Terras altas & 4 976 176 & 5 846 \\
+  201 a 500 & 3 151 646 & 3 703 \\
+  501 a 800 & 1 249 906 & 1 468 \\
+  801 a 1200 & 574 624 & 675 \\ \addlinespace
+  
+  Áreas culminantes & 46 267 & 0,54 \\
+  1201 a 1800 & 44 767 & 0,52 \\
+  1801 a 3014\tmark[(1)] & 1500 & 0,02 \LL
+}

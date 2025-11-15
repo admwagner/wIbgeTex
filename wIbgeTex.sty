@@ -1,0 +1,301 @@
+% ===================================================================
+% Pacote wIbgeTex
+% Finalidade: Fornecer comandos e ambientes para criar tabelas
+% no padrão de formatação tabular do IBGE.
+% Autor: Wagner Ferreira da Silva
+% ===================================================================
+
+%     Identificação do Pacote
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wIbgeTex}[2025/11/15 v1.0 Pacote para tabelas IBGE]
+
+%     Mensagem de carregamento 
+\PackageInfo{wIbgeTex}{Carregando pacote de tabelas IBGE...}
+
+%     Dependências Essenciais
+% Pacotes básicos e de suporte
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[brazil]{babel}
+\RequirePackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,calc}
+\RequirePackage{setspace}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{xparse}
+\RequirePackage{enumitem}
+
+% Pacotes de Tabela e Gráficos
+\RequirePackage{calc}
+\RequirePackage{longtable}
+\RequirePackage{array}
+\RequirePackage{caption}
+\RequirePackage{multirow}
+\RequirePackage{makecell}
+\RequirePackage{ctable}
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+
+% espaçamento, dos símbolos corretos para que 
+% a formatação seja consistente em todo o documento. 
+\RequirePackage{siunitx}
+
+% ===================================================================
+%   Definições de Fonte Configuráveis (Prefixo wIbge)
+% ===================================================================
+%
+% Controla a fonte do CORPO da tabela
+\providecommand{\wIbgeTabFont}{\sffamily\footnotesize}
+%
+% Controla a fonte das NOTAS e FONTES
+\providecommand{\wIbgeNoteFont}{\sffamily\footnotesize}
+
+% ===================================================================
+%   Aplicação Automática das Fontes
+% ===================================================================
+%
+% Aplica \wIbgeTabFont automaticamente aos ambientes de tabela
+\AtBeginEnvironment{tabular}{\wIbgeTabFont}
+\AtBeginEnvironment{longtable}{\wIbgeTabFont}
+\AtBeginEnvironment{tabularx}{\wIbgeTabFont}
+
+% ===================================================================
+%   Comandos e Listas para Notas de Rodapé (Prefixo wIbge)
+% ===================================================================
+\makeatletter
+
+%     variável para a largura máxima da etiqueta de nota
+\newlength{\wIbgeNoteLabelWidth}
+
+% A medição é atrasada para depois do \begin{document}
+% para garantir que \wIbgeNoteFont foi definida.
+\AtBeginDocument{%
+  % Mede a etiqueta mais larga ("Fontes:") + um espaço
+  \settowidth{\wIbgeNoteLabelWidth}{\wIbgeNoteFont Fontes:~}%
+}
+
+%     Lista para Sinais Convencionais (uso do utilizador)
+\newlist{wIbgeLista}{enumerate}{1}
+\setlist[wIbgeLista]{
+  topsep=0pt,
+  itemsep=0pt,
+  leftmargin=4mm+\labelwidth,
+}
+
+% --- Comando \wIbgeFonte (Refatorado para alinhamento à esquerda) ---
+% Esta versão usa \makebox com largura fixa e alinhamento [l]
+\NewDocumentCommand{\wIbgeFonte}{ O{Fonte} +m }{%
+  \par\vspace{-3mm}%
+  \begin{SingleSpacing}
+    \wIbgeNoteFont
+    \noindent 
+    %     Bloco da Etiqueta
+    % Cria uma caixa de largura fixa (\wIbgeNoteLabelWidth)
+    % e alinha o conteúdo (#1:) à ESQUERDA [l] dentro dela.
+    \makebox[\wIbgeNoteLabelWidth][l]{#1:\hspace{0.5em}}%
+    %     Bloco do Conteúdo
+    % Cria uma parbox para o texto, alinhada [t] pelo topo,
+    % ocupando o restante da linha.
+    \parbox[t]{\dimexpr\linewidth-\wIbgeNoteLabelWidth\relax}{#2}% 
+  \end{SingleSpacing}%
+  \par\vspace{1mm}%
+}%
+
+%     Comando \wIbgeNota
+\NewDocumentCommand{\wIbgeNota}{ O{Nota} +m }{%
+  \wIbgeFonte[#1]{#2}%
+}%
+
+\makeatother
+
+
+% ===================================================================
+%   4. DEFINIÇÃO DOS TIPOS DE COLUNA PERSONALIZADOS
+% ===================================================================
+
+%     Alinhados pela base (b - bottom)
+% L: Esquerda (raggedright)
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}b{#1}}
+% C: Centralizado (centering)
+\newcolumntype{C}[1]{>{\centering\arraybackslash}b{#1}}
+% R: Direita (raggedleft)
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}b{#1}}
+
+%     Alinhados ao Meio (m - middle)
+% E: Esquerda (raggedright)
+\newcolumntype{E}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% M: Centralizado (centering)
+\newcolumntype{M}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% D: Direita (raggedleft)
+\newcolumntype{D}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+% Y: Coluna X alinhada à direita
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+
+% ===================================================================
+%   5. COMANDOS PARA SÍMBOLOS GRÁFICOS (TIKZ)
+% ===================================================================
+
+%     Para chaves verticais em tabelas (ex: Sinais Convencionais)
+\newcommand{\wIbgeTikzmark}[1]{\tikz[remember picture] \node (#1) {};}
+
+\newcommand{\wIbgeDrawbrace}[2]{%
+  \begin{tikzpicture}[overlay,remember picture]
+    \draw[decorate,decoration={brace,amplitude=6pt},thick]
+      ($(#1)+(.5em,0.3ex)$) -- ($(#2)+(.5em,-0.8ex)$);
+  \end{tikzpicture}%
+}
+
+%     Símbolos de intervalo IBGE
+% w |-- z (w a menos de z)
+\newcommand{\wIbgeVdash}{%
+\tikz[baseline=0ex]{
+  \draw[line width=0.4pt] (0,0) -- (0,1.3ex);
+  \draw[line width=0.4pt] (0,0.65ex) -- (1.2em,0.65ex);
+}~}
+
+% w --| z (mais de w a z)
+\newcommand{\wIbgeDashv}{%
+  ~\tikz[baseline=0ex]{
+  \draw[line width=0.4pt] (1.2em,0) -- (1.2em,1.3ex);
+  \draw[line width=0.4pt] (0,0.65ex) -- (1.2em,0.65ex);
+}~}
+
+% w |--| z (w a z, inclusivo)
+\newcommand{\wIbgeVdashDashv}{%
+~\tikz[baseline=0ex]{
+  \draw[line width=0.4pt] (0,0.65ex) -- (1.2em,0.65ex); 
+  \draw[line width=0.4pt] (0,0) -- (0,1.3ex); 
+  \draw[line width=0.4pt] (1.2em,0) -- (1.2em,1.3ex); 
+}~}
+
+% ===================================================================
+%   6. AJUSTES GLOBAIS DE ESPAÇAMENTO DE LINHA
+% ===================================================================
+
+% Adiciona espaço vertical extra em cada linha (para dados)
+\setlength{\extrarowheight}{2pt}
+
+% Multiplicador de espaçamento de linha (também para "respiração")
+\renewcommand{\arraystretch}{1.2}
+
+% ===================================================================
+%   7. CONFIGURAÇÃO DAS LEGENDAS (CAPTIONS)
+% ===================================================================
+
+% Define o estilo da legenda (alinhada à esquerda, formato "pendurado")
+\captionsetup{
+  justification=raggedright,
+  singlelinecheck=false,
+  format=hang,
+  labelfont=bf,
+}
+% Define o separador como um travessão (endash)
+\captiondelim{~\textendash~}
+
+% ===================================================================
+%   8. AJUSTES FINOS DE ESPAÇAMENTO (BOOKTABS/CTABLE)
+% ===================================================================
+
+% Remove o espaçamento padrão acima/abaixo das linhas - para cabeçalho
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+
+% ===================================================================
+%   9. COMANDO AUTOMATIZADO PARA SINAIS CONVENCIONAIS
+% ===================================================================
+
+% Ativa o "@" como uma letra
+\makeatletter
+
+% TEXTOS-PADRÃO PARA SINAIS CONVENCIONAIS
+\newcommand{\wIbge@SinalZeroPos}{Dado numérico igual a zero resultante de arredondamento de dado numérico originalmente positivo.}
+\newcommand{\wIbge@SinalZeroNeg}{Dado numérico igual a zero resultante de arredondamento de dado numérico originalmente negativo.}
+\newcommand{\wIbge@SinalZeroNaoArred}{Dado numérico igual a zero não resultante de arredondamento.}
+\newcommand{\wIbge@SinalNaoSeAplica}{Não se aplica dado numérico.}
+\newcommand{\wIbge@SinalNaoDisponivel}{Dado numérico não disponível.}
+\newcommand{\wIbge@SinalOmitido}{Dado numérico omitido a fim de evitar a individualização da informação.}
+
+% LÓGICA (expl3)
+\ExplSyntaxOn
+
+%     Função Interna: O "Banco de Dados"
+\cs_new_protected:Npn \__wIbge_sinais_print:n #1
+  {
+    \str_case:nnF { #1 }
+      {
+        {0.00}  { \item[0{,}00] \wIbge@SinalZeroPos }
+        {-0.00} { \item[-0{,}00] \wIbge@SinalZeroNeg }
+        {0.0}  { \item[0{,}0] \wIbge@SinalZeroPos }
+        {-0.0} { \item[-0{,}0] \wIbge@SinalZeroNeg }
+        {0}     { \item[0] \wIbge@SinalZeroPos }
+        {-0}    { \item[-0] \wIbge@SinalZeroNeg }
+        {-}     { \item[--] \wIbge@SinalZeroNaoArred }
+        {..}    { \item[..] \wIbge@SinalNaoSeAplica }
+        {...}   { \item[...] \wIbge@SinalNaoDisponivel }
+        {x}     { \item[x] \wIbge@SinalOmitido }
+      }
+      {
+        %     "Default" (Erro)
+        \PackageError{wIbgeTex}
+          { Chave~de~sinal~convencional~'#1'~desconhecida }
+          { Use~apenas~chaves~validas:~zeroPos,~zeroNeg,~omitido,~etc. }
+      }
+  }
+
+%     para contagem
+\clist_new:N \l__wIbge_sinais_temp_clist
+\int_new:N   \l__wIbge_sinais_count_int
+
+%     Comando \wIbgeSinaisConvencionais
+\NewDocumentCommand{\wIbgeSinaisConvencionais}{ m }
+  {
+    \clist_set:Nn \l__wIbge_sinais_temp_clist { #1 }
+    \int_set:Nn \l__wIbge_sinais_count_int { \clist_count:N \l__wIbge_sinais_temp_clist }
+    
+    \noindent
+    \int_compare:nNnTF { \l__wIbge_sinais_count_int } = { 1 }
+      {
+        Sinal~convencional~utilizado:
+      }
+      {
+        Sinais~convencionais~utilizados:
+      }
+      
+    \begin{wIbgeLista}
+      \clist_map_inline:Nn \l__wIbge_sinais_temp_clist
+        {
+          \__wIbge_sinais_print:n { ##1 }
+        }
+    \end{wIbgeLista}
+  }
+  
+\ExplSyntaxOff
+\makeatother % fim programação
+
+
+% ===================================================================
+%   10. CONFIGURAÇÃO DO SIUNITX
+% ===================================================================
+% Define o modo do siunitx como "texto".
+% mode = text: Usa a fonte do texto (não a de matemática).
+% detect-all: Força o siunitx a usar a fonte atual 
+%             (família, forma e tamanho) e usá-la.
+\sisetup{
+  mode = text,
+  detect-all 
+}
+
+% ===================================================================
+%   11. CONFIGURAÇÕES GLOBAIS DE LONGTABLE
+% ===================================================================
+% (Migrado de wtexbase.sty )
+
+\setlength{\LTcapwidth}{0.97\linewidth} % Largura padrão do caption
+\setlength{\LTpre}{3pt}   % Espaço acima da tabela longa
+\setlength{\LTpost}{3pt}  % Espaço abaixo da tabela longa
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Fim do Pacote
+\endinput

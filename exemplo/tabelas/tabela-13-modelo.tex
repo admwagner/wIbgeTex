@@ -1,2 +1,68 @@
-% data: 
-% tags: 
+% Tabela Modelo 13
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{\renewcommand{\arraystretch}{0.9}%
+ \renewcommand{\cellalign}{cc}%
+ \renewcommand{\cellgape}{}% evita espaço extra do makecell no cabeçalho
+ \SingleSpacing
+ \ctable[
+   label=tabIbge13,
+   caption={População residente em 1980 e 1991, por sexo, área total e densidade demográfica em 1991, para os Municípios do Estado de Roraima},
+   width=\linewidth, center, pos=!htb, notespar, nosuper
+ ]{X R{15mm} R{15mm} R{20mm} R{20mm}}{ 
+   \wIbgeFonte{Sinopse Preliminar do Censo Demográfico 1991. Roraima, Amapá. Rio de Janeiro: IBGE n. 4, 31p.}
+   \wIbgeNota{
+     \wIbgeSinaisConvencionais{.., ...}
+   }
+   \wIbgeNoteFont % Define a fonte para \tnote
+   \tnote[(1)]{Valores numéricos de áreas sujeitos a verificação/alteração, face ao processo de implantação de nova metodologia na medição.}
+   \tnote[(2)]{Município instalado entre 01.09.1980 e 01.09.1991.}
+   \tnote[(3)]{Município que sofreu desmembramento entre 01.09.1980 e 01.09.1991.}
+ }{
+   \FL
+    \multirow{4}{=}{Município e sexo}    & 
+        \multicolumn{2}{C{30mm}}{\multirow{2}{*}{População residente}}
+      & \multirow{4}{=}{\parbox{20mm}{Área total em  01.09.1991 (km\textsuperscript{2}) \tmark[(1)]}}
+      & \multirow{4}{=}{\parbox{20mm}{Densidade  demográfica em 01.09.1991 (hab/km\textsuperscript{2})}}     \\
+     &&&& \\ 
+     & 01.09.1980 & 01.09.1991 & & \\
+     
+ &&&&  \\ 
+     \midrule
+   
+   Total \dotfill & 79\,159 & 215\,950 & 224\,131,3 & 0.96 \\
+\multicolumn{5}{l}{}\\ 
+Homem \dotfill & ... & 119\,170 & .. & .. \\ 
+Mulher \dotfill & ... & 96\,780 & .. & .. \\ 
+Alto Alegre \tmark[(2)] \dotfill & 3\,475 & 11\,196 & 25\,653,3 & 0,44 \\ 
+Homem \dotfill & ... & 6\,889 & .. & .. \\ 
+Mulher \dotfill & ... & 4\,307 & .. & .. \\
+Boa Vista \tmark[(3)] \dotfill & 51\,662 & 142\,902 & 44\,295,0 & 3,23 \\
+Homem \dotfill & ... & 76\,949 & .. & .. \\
+Mulher \dotfill & ... & 65\,953 & .. & .. \\ 
+Bonfim \tmark[(2)] \dotfill & 4\,524 & 9\,454 & 14\,390,0 & 0,66 \\ 
+Homem \dotfill & ... & 5\,126 & .. & .. \\
+Mulher \dotfill & ... & 4\,328 & .. & .. \\ 
+Caracaraí \tmark[(3)] \dotfill & 4\,990 & 8\,910 & 51\,99,3 & 0,17 \\ 
+Homem \dotfill & ... & 4\,859 & .. & .. \\ 
+Mulher \dotfill & ... & 4\,051 & .. & .. \\ 
+Mucajaí \dotfill & 3\,163 & 13\,135 & 23\,6017 & 56 \\
+Homem \dotfill & ... & 8\,105 & .. & .. \\ 
+Mulher \dotfill & ... & 5\,030 & .. & .. \\ 
+Normandia \tmark[(2)] \dotfill & 7\,713 & 11\,165 & 12\,927,0 & 0,86 \\ 
+Homem \dotfill & ... & 6\,291 & .. & .. \\ 
+Mulher \dotfill & ... & 4\,874 & .. & .. \\
+São João da Baliza \tmark[(2)] \dotfill & 1\,531 & 10\,089 & 19\,272,5 & 0,52 \\ 
+Homem \dotfill & ... & 6\,104 & .. & .. \\ 
+Mulher \dotfill & ... & 3\,985 & .. & .. \\ 
+São Luiz \tmark[(2)] \dotfill & 2\,101 & 9\,099 & 32\,192,5 & 0,28 \\
+Homem \dotfill & ... & 4\,847 & .. & .. \\ 
+Mulher \dotfill & ... & 4\,252 & .. & .. \LL
+   
+ }
+ \renewcommand{\arraystretch}{1.0}%
+}

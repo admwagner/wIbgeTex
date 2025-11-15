@@ -1,2 +1,54 @@
-% data: 
-% tags: 
+% Tabela Modelo 6
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\begin{SingleSpace}
+\ctable[
+  label = tabIbge6,
+  caption = {Turistas estrangeiros, por meio de transporte e a Unidade da Federação de entrada -- Brasil -- 1989-1990}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{L{2mm} L{25mm} R{10mm} R{10mm} || L{2mm} L{25mm} R{10mm} R{10mm} }
+{% notas
+  \wIbgeFonte[Fontes]{Presidência da República, Secretaria de Desenvolvimento Regional, Instituto Brasileiro de Turismo, Divisão de Estatística -- Departamento de Polícia Federal.}
+}
+{ % conteúdo da tabela 
+  \FL
+  \multicolumn{2}{C{27mm}|}{\multirow{2}{*}{\parbox{30mm}{\centering Meio de Transporte e Unidade da Federação de entrada}}}	&
+  \multicolumn{2}{C{20mm}||}{Entrada de turista estrangeiro} &
+  \multicolumn{2}{C{27mm}|}{\multirow{2}{*}{\parbox{30mm}{\centering Meio de Transporte e Unidade da Federação de entrada}}}	&
+  \multicolumn{2}{C{20mm}}{Entrada de turista estrangeiro} 
+  \\ \cmidrule{3-4} \cmidrule{7-8} 
+  & & \multicolumn{1}{|r|}{1989} & 1990 & &  & \multicolumn{1}{|r|}{1989} & 1990 \ML
+
+  & \hspace{5mm}Total & 1402897 & 1078601 & \multicolumn{2}{l}{Via maritima} & 24612 & 39070 \\
+  & Amazonas & 13032 & 11789 & & Pernambuco & 3513 & 5043 \\
+  & Pará & 16882 & 18669 & & Bahia & 2245 & 2828 \\
+  & Pernambuco & 34541 & 38935 & & Rio de Janeiro & 5416 & 12178 \\
+  & Bahia & 16882 & 16208 & & São Paulo & 590 & 852 \\
+  & Rio de Janeiro & 472445 & 438015 & & Paraná & 1203 & 4920 \\
+  & São Paulo & 183960 & 150810 & & Rio Grande do Sul & 2062 & 3234 \\
+  & Paraná & 159779 & 122830 & & Outras & 9583 & 10015 \\
+
+  & Rio Grande do Sul & 422658 & 225247 & & & & \\
+  & Mato Grosso do Sul & 32742 & 23550 & \multicolumn{2}{l}{Via terrestre} & 592933 & 358743 \\
+  & Distrito Federal & 414 & 461 & & Amazonas & 2023 & 1611 \\
+  & Outras & 49562 & 32087 & & Paraná & 147252 & 108024 \\
+  & & & & & Rio Grande do Sul & 380204 & 207893 \\
+  \multicolumn{2}{l}{Via aérea} & 748021 & 665695 & &Mato Grosso do Sul & 32623 & 23454 \\
+  & Amazonas & 9800 & 9476 & &  Outras & 30831 & 17761\\
+  & Pará & 14617 & 15626 & &  \\
+  & Pernambuco & 31028 & 33892 & & & & \\
+  & Bahia & 14637 & 13380 & \multicolumn{2}{l}{Via fluvial} & 37331 & 15093   \\
+  & Rio de Janeiro & 467029 & 425837 & &  \\
+  & São Paulo & 183370 & 149958 & \\
+  & Paraná & 10011 & 9131 & & Amazonas & 1209 & 702 \\
+  & Rio Grande do Sul & 8108 & 3528 & &  Pará & 2265 & 3043\\
+  & Mato Grosso do Sul & 119 & 96 & &  Paraná & 1313 & 755\\
+  & Distrito Federal & 414 & 461 & & Rio Grande do Sul & 32284 & 10592 \\
+  & Outras & 8888 & 4310 & & Outras & 260 & 1 \\ \FL
+}
+\end{SingleSpace}

@@ -1,2 +1,42 @@
-% data: 
-% tags: 
+% Tabela Modelo 12
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  label = tabIbge12,
+  caption = {População de 5 anos ou mais de idade, por sexo e grupo de idade -- Brasil -- 1990}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X r r r r r}%  Definição das colunas
+{% notas 
+  \wIbgeFonte{IBGE, Diretoria de Pesquisas, Departamento de Emprego e Rendimento.}
+  \wIbgeNota{As diferenças entre soma de parcelas e respectivos totais são provenientes do critério de arredondamento. \par
+  Exclui as pessoas da zona rural da Região Norte, sem Tocantins. \par
+    \wIbgeSinaisConvencionais{0, -}
+  }
+  \wIbgeNoteFont % Define a fonte para \tnote
+  \tnote[(1)]{Inclui sem declaração de alfabetização.}
+}
+{ % conteúdo da tabela
+  \FL
+\multirow{4}{*}{Grupo de idade} & \multicolumn{5}{|c}{População de 5 anos ou mais de idade (1\,000)} \\ \cmidrule{2-6}
+& \multicolumn{1}{|c|}{Total \tmark[(1)]} & \multicolumn{4}{c}{ Condição de alfabetização}  \\ \cmidrule{3-6}
+& \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{Alfabetizada} & \multicolumn{2}{c}{Não-alfabetizada} \\ \cmidrule{3-6}
+& \multicolumn{1}{|c|}{} & Homem & \multicolumn{1}{|c|}{Mulher} & Homem & \multicolumn{1}{|c}{Mulher } \ML
+
+\hspace{5mm}Total \dotfill        & 131\,317 & 48\,926 & 51\,796 & 15\,318 & 15\,276 \\ \addlinespace
+5 a 6 anos \dotfill        & 6\,772   & 287     & 313     & 3\,202  & 2\,970  \\ \addlinespace
+7 a 9 anos  \dotfill       & 10\,916  & 3\,240  & 3\,430  & 2\,258  & 1\,985  \\ \addlinespace
+10 a 14 anos  \dotfill     & 16\,981  & 7\,029  & 7\,507  & 1\,489  & 957     \\ \addlinespace
+15 a 19 anos \dotfill      & 14\,915  & 6\,580  & 6\,929  & 929     & 476     \\ \addlinespace
+20 a 24 anos \dotfill      & 13\,051  & 5\,707  & 6\,067  & 734     & 543     \\ \addlinespace
+25 a 29 anos  \dotfill     & 12\,082  & 5\,077  & 5\,777  & 674     & 553     \\ \addlinespace
+30 a 39 anos \dotfill      & 20\,679  & 8\,655  & 9\,272  & 1\,303  & 1\,448  \\ \addlinespace
+40 a 49 anos \dotfill      & 14\,449  & 5\,556  & 5\,714  & 1\,435  & 1\,744  \\ \addlinespace
+50 a 59 anos  \dotfill     & 10\,145  & 3\,664  & 3\,553  & 1\,245  & 1\,683  \\ \addlinespace
+60 anos ou mais  \dotfill  & 11\,327  & 3\,129  & 3\,234  & 2\,049  & 2\,915  \\ \addlinespace
+Idade ignorada   \dotfill  & 1        & 0       & -       & -       & 1       \LL
+}

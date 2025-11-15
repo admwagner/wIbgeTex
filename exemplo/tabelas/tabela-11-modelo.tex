@@ -1,2 +1,57 @@
-% data: 
-% tags: 
+% Tabela Modelo 11
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{
+\SingleSpacing
+\ctable[
+  label = tabIbge11,
+  caption = {Número de registros no ano de nascidos vivos, com indicação dos nascidos no ano, por sexo e Grande Região de registro -- Brasil -- 1987--1989}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X c r r r r} %  Definição das colunas
+{% notas 
+  \wIbgeFonte{IBGE, Diretoria de Pesquisas, Departamento de População, pesquisa do Registro Civil.}
+  \wIbgeNoteFont % Define a fonte para \tnote
+  \tnote[(1)]{Inclui registros de nascidos vivos em anos anteriores.} 
+}
+{ % conteúdo da tabela
+  \FL
+  \multicolumn{1}{l}{\multirow{4}{*}{Grande Região de registro}} & \multicolumn{1}{|c|}{\multirow{4}{*}{Ano}} & \multicolumn{4}{c}{Nascidos vivos registrados no ano} \\ \cmidrule(lr){3-6}
+  & \multicolumn{1}{|c|}{} & \multirow{3}{*}{Total\tmark[(1)]} & \multicolumn{3}{|c}{Nascidos no ano} \\ \cmidrule(lr){4-6}
+  & \multicolumn{1}{|c|}{}& & \multicolumn{1}{|c}{\multirow{2}{*}{Total}} & 	\multicolumn{2}{|c}{Sexo} \\ \cmidrule(lr){5-6}
+  & \multicolumn{1}{|c|}{}& &  \multicolumn{1}{|c}{}& \multicolumn{1}{|c|}{Masculino} & Feminino \ML
+
+ \multirow{3}{*}{\hspace{5mm} Brasil} & 1987 & 4\,072\,032 & 2\,660\,886 & 1\,358\,475 & 1\,302\,411 \\
+ & 1988 & 4\,993\,923 & 2\,809\,657 & 1\,432\,295 & 1\,377\,362 \\
+ & 1989 & 3\,636\,901 & 2\,581\,035 & 1\,317\,159 & 1\,263\,876 \\
+\multicolumn{6}{l}{} \\
+
+\multirow{3}{*}{Norte} & 1987 & 288\,496 & 104\,706 & 53\,389 & 51\,317 \\
+ & 1988 & 486\,678 & 121\,683 & 62\,006 & 59\,677 \\
+ & 1989 & 302\,123 & 112\,965 & 57\,252 & 55\,713 \\
+\multicolumn{6}{l}{} \\
+
+\multirow{3}{*}{Nordeste} & 1987 & 1\,500\,769 & 681\,288 & 346\,248 & 335\,040 \\
+ & 1988 & 2\,023\,058 & 738\,017 & 374\,660 & 363\,357 \\
+ & 1989 & 1\,132\,531 & 599\,608 & 305\,636 & 293\,972 \\
+\multicolumn{6}{l}{} \\
+
+\multirow{3}{*}{Sudeste} & 1987 & 1\,483\,761 & 1\,252\,226 & 640\,542 & 611\,684 \\
+ & 1988 & 1\,567\,884 & 1\,293\,873 & 660\,200 & 633\,673 \\
+ & 1989 & 1\,455\,218 & 1\,253\,513 & 640\,008 & 613\,505 \\
+
+ \multicolumn{6}{l}{} \\
+\multirow{3}{*}{Sul} & 1987 & 527\,081 & 445\,655 & 227\,804 & 217\,851 \\
+ & 1988 & 568\,199 & 467\,856 & 239\,470 & 228\,386 \\
+ & 1989 & 509\,311 & 446\,285 & 227\,972 & 218\,313 \\
+
+ \multicolumn{6}{l}{} \\
+\multirow{3}{*}{Centro-Oeste} & 1987 & 271\,925 & 177\,011 & 90\,492 & 86\,519 \\
+ & 1988 & 348\,104 & 188\,228 & 95\,959 & 92\,269 \\
+ & 1989 & 237\,718 & 168\,664 & 86\,291 & 82\,373 \LL
+}
+}

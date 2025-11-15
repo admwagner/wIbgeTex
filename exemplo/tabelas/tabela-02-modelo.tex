@@ -1,2 +1,62 @@
-% data: 
-% tags: 
+% Tabela Modelo 2
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+% Modelo 2 usa 'table' e 'tabularx' porque o ctable não suporta
+% a quebra da tabela em duas partes horizontais.
+\begin{table}[htb]
+  \caption{Pessoas residentes em domicílios particulares, por estado 
+    conjugal, para as Microrregiões e os Municípios do Estado do 
+    Amapá -- 1980} 
+  \label{tabIbge2}
+  
+  %%%%% Quadro 1 (Parte 1 da tabela) 
+  \begin{tabularx}{\linewidth}{L{50mm} Y Y Y Y}
+    \toprule \addlinespace
+    & \textbf{Total} & \textbf{Solteiro} & \textbf{Casado} & 
+      \textbf{Separado} \\ \addlinespace    \midrule
+    \hspace{10mm} Total \dotfill & 89\,264 & 30\,509 & 51\,327 & 2\,412 \\
+    \addlinespace
+    \multicolumn{5}{l}{\hspace{5mm} Microrregiões} \\
+    Macapá \dotfill & 80\,920 & 28\,012 & 46\,042 & 2\,288 \\
+    Amapá e Oiapoque \dotfill & 8\,344 & 2\,497 & 5\,285 & 124 \\
+    \addlinespace
+    \multicolumn{5}{l}{\hspace{5mm} Municípios} \\
+    Amapá \dotfill & 4\,551 & 1\,405 & 2\,844 & 61 \\
+    Calçoene \dotfill & 1\,352 & 474 & 770 & 39 \\
+    Macapá \dotfill & 70\,829 & 25\,168 & 39\,502 & 2\,034 \\
+    Mazagão \dotfill & 10\,091 & 2\,844 & 6\,540 & 254 \\
+    Oiapoque \dotfill & 2\,441 & 618 & 1\,671 & 24 \\ 
+    \bottomrule
+  \end{tabularx}
+  
+  \par \vspace{0.5em} % Pequeno espaço entre as duas partes
+
+  %%%%% Quadro 2 (Parte 2 da tabela) 
+  \begin{tabularx}{\linewidth}{L{50mm} Y Y Y}
+    \toprule \addlinespace
+    & \textbf{Desquitado} & \textbf{Viúvo} & \textbf{Sem declaração} \\ 
+    \addlinespace \midrule
+    \hspace{10mm} Total \dotfill & 152 & 3\,762 & 1\,102 \\
+    \addlinespace
+    \multicolumn{4}{l}{\hspace{5mm} Microrregiões} \\
+    Macapá \dotfill & 152 & 3\,406 & 1\,020 \\
+    Amapá e Oiapoque \dotfill     & - & 356 & 82 \\
+    \addlinespace
+    \multicolumn{4}{l}{\hspace{5mm} Municípios} \\
+    Amapá \dotfill & - & 189 & 52 \\
+    Calçoene \dotfill & - & 66 & 3 \\
+    Macapá \dotfill & 128 & 3\,080 & 917 \\
+    Mazagão \dotfill & 24 & 326 & 103 \\
+    Oiapoque \dotfill & - & 101 & 27 \\
+    \bottomrule
+  \end{tabularx}
+  
+  \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e Estatística (IBGE)}
+  \wIbgeNota{\wIbgeSinaisConvencionais{-}
+  }
+
+\end{table}

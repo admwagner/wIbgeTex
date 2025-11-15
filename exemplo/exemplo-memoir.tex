@@ -1,1 +1,93 @@
-%modelo "canónico" usando a classe memoir
+\documentclass[11pt, oneside, brazilian]{memoir}
+
+% --- CARREGA O PACOTE DE TABELAS ---
+\usepackage{wIbgeTex} 
+
+% --- Configurações de página ---
+\setstocksize{24cm}{17cm}
+\settrimmedsize{24cm}{17cm}{*}
+\setlrmarginsandblock{2cm}{2cm}{*} % esquerda/direita
+\setulmarginsandblock{2cm}{2cm}{*} % superior/inferior
+\checkandfixthelayout
+ 
+
+% --- Pacotes de Fonte (escolha do utilizador) ---
+\usepackage{XCharter}
+\usepackage[condensed]{tgheros}
+\usepackage{newpxmath}
+
+% --- Outros pacotes para o teste ---
+\usepackage{lipsum} % para texto falso
+\usepackage{hyperref}
+
+% ===================================================================
+\begin{document}
+% ===================================================================
+
+\chapter{Teste de Tabelas com \texttt{wIbgeTex}}
+
+Perceba que em todos os modelos do IBGE a tabela tem a largura total da linha. Logo, a fonte e as notas ficam alinhadas a esquerda. Esta regra, ou no mínimo preferência, é perceptível na tabela 1 que poderia ter tamanho menor.
+
+\lipsum[1][1-4]
+
+% --- Importa a Tabela 1 ---
+\input{tabelas/tabela-01-modelo.tex}
+
+\lipsum[2][1-3]
+
+% --- Importa a Tabela 2 ---
+\clearpage
+\input{tabelas/tabela-02-modelo.tex}
+
+% --- Importa a Tabela 3 ---
+\clearpage
+\input{tabelas/tabela-03-modelo.tex}
+
+% --- Importa a Tabela 4 ---
+\clearpage
+\input{tabelas/tabela-04-modelo.tex}
+
+% --- Importa a Tabela 5 ---
+\clearpage
+\input{tabelas/tabela-05-modelo.tex}
+
+% --- Importa a Tabela 6 ---
+\clearpage
+\input{tabelas/tabela-06-modelo.tex}
+
+% --- Importa a Tabela 7 ---
+\clearpage
+\input{tabelas/tabela-07-modelo.tex}
+
+% --- Importa a Tabela 8 ---
+\clearpage
+\input{tabelas/tabela-08-modelo.tex}
+
+% --- Importa a Tabela 9 ---
+\clearpage
+\input{tabelas/tabela-09-modelo.tex}
+
+% --- Importa a Tabela 10 ---
+\clearpage
+\input{tabelas/tabela-10-modelo.tex}
+
+% --- Importa a Tabela 11 ---
+\clearpage
+\input{tabelas/tabela-11-modelo.tex}
+
+% --- Importa a Tabela 12 ---
+\clearpage
+\input{tabelas/tabela-12-modelo.tex}
+
+% --- Importa a Tabela 13 ---
+\clearpage
+\input{tabelas/tabela-13-modelo.tex}
+
+% --- Importa a Tabela 14 ---
+\clearpage
+\input{tabelas/tabela-14-modelo.tex}
+
+% --- Importa a Tabela 15 ---
+\clearpage
+\input{tabelas/tabela-15-modelo.tex}
+\end{document}

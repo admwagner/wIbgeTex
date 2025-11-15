@@ -1,2 +1,59 @@
-% data: 
-% tags: 
+% Tabela Modelo 4
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{\renewcommand{\arraystretch}{0.9}
+\SingleSpacing
+\ctable[
+  label = tabIbge4,
+  caption = {Esperança de vida ao nascer, por região socioeconômica -- Brasil -- 1940/1980},
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X r r r r r } %  Definição das colunas
+{% notas 
+  \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e Estatística (IBGE).}
+  \wIbgeNota[Notas]{Média das esperanças de vida ao nascer, resultantes de interpolação linear, nas Tábuas de Mortalidade Modelo Brasil, das probabilidades de morrer até as idades de 2, 3 e 5 anos, obtidas através do emprego da Técnica de Brass. \par
+    \wIbgeSinaisConvencionais{..,...}
+  }
+  \wIbgeNoteFont % Define a fonte para \tnote
+  \tnote[(1)]{Estimativas sujeitas a revisão, por não estar concluído o processo de avaliação de consistência das informações sobre filhos tidos nascidos vivos e nascidos mortos, do Censo Demográfico de 1980.}
+  \tnote[(2)]{Inclui a população das Regiões Norte e Centro-Oeste.}
+  \tnote[(3)]{Exclui os dados da zona rural das Regiões Norte e Centro-Oeste.}
+  \tnote[(4)]{Exclui os dados relativos à Região VII, uma vez que a Pesquisa Nacional por Amostra de Domicílios só foi estendida àquela região a partir de 1973.}
+
+}
+{ % conteúdo da tabela (Parte 1)
+  \FL
+  \multirow{2}{*}{Região socioeconômica} & \multicolumn{5}{c}{Esperança de vida ao nascer (anos)} \\ \cmidrule{2-6}
+  & 1940 & 1950 & 1960 & 1970 & 1972  \ML
+
+  \hspace{5mm} Brasil & \tmark[(2)] 42,74 &  \tmark[(2)]  45,90 & \tmark[(2)]  52,37 & \tmark[(3)] 52,49 & \tmark[(4)] 53,36 \\ \addlinespace 
+  Região I - RJ & 45,38 & 50,91 & 59,19 & 57,29 & 63,21 \\
+  Região II - SP & 43,57 & 49,92 & 59,11 & 58,45 & 64,35 \\
+  Região III - PR, SC e RS & 50,09 & 53,33 & 60,34 & 60,26 & 63,77 \\
+  Região IV - MG e ES & 43,93 & 47,10 & 53,29 & 54,78 & 60,38 \\
+  Região V - MA, PI, CE, RN, PB, PE, AL, SE e BA & 38,17 & 38,69 & 43,51 & 44,38 & 42,55 \\ 
+  Região VI - DF & .. & .. & 48,91 & 54,17 & 60,31 \\
+  Região VII - RO, AC, AM, RR, PA, AP, MS, MT e GO & ... & ... & ... & 56,57 & ...  \LL
+  
+  
+  % --- Repetição do Cabeçalho (Parte 2) ---
+  \FL
+  
+  \multirow{2}{*}{Região socioeconômica} & \multicolumn{5}{c}{Esperança de vida ao nascer (anos)} \\ \cmidrule{2-6}
+  & 1973 & 1976 & 1977 & 1978 & 1980 \tmark[(1)]  \ML
+
+  \hspace{5mm}Brasil & \tmark[(3)] 54,56 & \tmark[(3)] 57,25 & \tmark[(3)] 57,81 & \tmark[(3)] 58,44 & \tmark[(4)] 59,83 \\ \addlinespace
+  Região I - RJ & 63,44 & 65,96 & 65,08 & 64,81 & 63,23 \\
+  Região II - SP &  64,87 & 64,31 & 64,54 & 64,98 & 63,55 \\ 
+  Região III - PR, SC e RS & 60,28 & 63,57 & 63,90 & 64,05 & 66,98 \\
+  Região IV - MG e ES & 60,27 & 61,82 & 61,12 & 63,50 & 62,20 \\
+  Região V - MA, PI, CE, RN, PB, PE, AL, SE e BA & 42,76 & 47,51 & 48,93 & 48,94 & 51,57 \\
+  Região VI - DF & 60,65 & 63,83 & 64,59 & 63,35 & 66,24 \\
+  Região VII - RO, AC, AM, RR, PA, AP, MS, MT e GO & 65,93 & 62,44 & 61,85 & 62,53 & 64,30 \LL
+}
+\renewcommand{\arraystretch}{1.0}
+}

@@ -1,2 +1,25 @@
-% data: 
-% tags: 
+% Tabela Modelo 1
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  caption = {Pessoas residentes em domicílios particulares, por sexo e 
+    situação do domicílio -- Brasil -- 1980}, 
+  label = tabIbge1,
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X R{25mm} R{25mm} R{25mm}} % Definição das colunas
+{% notas
+  \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e Estatística (IBGE)}
+}{ % conteúdo da tabela 
+  \FL
+  Situação do domicílio & Total & Mulheres & Homens \ML
+  \hspace{10mm} Total & 177960301 & 59595332 & 58364969 \\
+  \addlinespace\addlinespace
+  Urbana & 79972931 & 41115439 & 38857492 \\
+  \addlinespace
+  Rural & 37987370 & 18479893 & 19507477 \LL
+}

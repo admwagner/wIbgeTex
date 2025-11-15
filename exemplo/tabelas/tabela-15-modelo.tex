@@ -1,2 +1,40 @@
-% data: 
-% tags: 
+% Tabela Modelo 15
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  label = tabIbge15,
+  caption = {Altitude e coordenadas geográficas dos pontos mais altos do Brasil -- 1992}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{L{30mm} X R{15mm} r r} %  Definição das colunas
+{% notas  
+  \wIbgeFonte{IBGE, Diretoria de Geociências, Departamento de Cartografia.}
+  \wIbgeNota{Foram considerados os pontos com altura superior a 2 500 metros.}
+  \wIbgeNoteFont % Define a fonte para \tnote
+  \tnote[(1)]{As altitudes ao decímetro correspondem às medições de campo e, as demais, à leitura de cartas fopográficas.}
+  \tnote[(2)]{Fronteira com a Venezuela.}
+  \tnote[(3)]{ Fronteira com a Guiana.}
+}
+{ % conteúdo da tabela
+  \FL
+      \multirow{2}{*}{Topônimo} & \multirow{2}{*}{Localização} & 
+        \multicolumn{1}{|c|}{\multirow{2}{*}{\parbox{15mm}{Altitude (m) \tmark[(1)]}}}
+        & \multicolumn{2}{c}{Coordenadas geográficas}  \\ \cmidrule{4-5}
+          &  \multicolumn{1}{l|}{}  & & \multicolumn{1}{|c|}{Latitude} & Longitude 
+          \ML
+     Pico da Neblina  & Serra do Imeri (AM) & 3\,014,1 & \ang{+00;47;49} & \ang{-66;00;22} \\ \addlinespace
+     Pico 31 de Março  & Serra do Imeri (AM)\tmark[(2)] & 2\,992,4 & \ang{+00;48;10} & \ang{-66;00;15} \\ \addlinespace
+      Pico da Bandeira  & Serra do Caparaó (MG/ES) & 2\,889,9 & \ang{-20;26;01} & \ang{-41;47;52} \\ \addlinespace
+    Pico do Cristal  & Serra do Caparaó (MG) & 2\,798 & \ang{-20;26;37} & \ang{-41;48;42} \\ \addlinespace
+    Pico das Agulhas Negras  & Serra do Itatiaia (MG/RJ) & 2\,787 & \ang{-22;22;47} & \ang{-44;39;40} \\ \addlinespace
+    Pedra da Mina  & Serra da Mantiqueira (MG/SP) & 2\,770 & \ang{-22;25;38} & \ang{-44;50;33} \\ \addlinespace
+    Pico do Calçado  & Serra do Caparaó (ES/MG) & 2\,766 & \ang{-20;27;07} & \ang{-40;50;28} \\ \addlinespace
+    Monte Roraima  & Serra do Pacaraima (RR)\tmark[(2)]\tmark[(3)] & 2\,727,3 & \ang{+05;12;05} & \ang{-60;43;39} \\ \addlinespace
+    Pico Três Estados  & Serra da Mantiqueira (SP/MG/RJ) & 2\,665 & \ang{-22;24;22} & \ang{-44;48;34} \\ \addlinespace
+    Pico do Cadorna  & Serra do Imeri (AM)\tmark[(2)] & 2\,596 & \ang{+00;47;50} & \ang{-66;00;30} \\ \addlinespace
+    Pedra Furada  & Serra da Mantiqueira (RJ/MG) & 2\,589 & \ang{-22;21;28} & \ang{-44;43;25} \LL
+}

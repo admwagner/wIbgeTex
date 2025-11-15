@@ -1,2 +1,65 @@
-% data: 
-% tags: 
+% Tabela Modelo 14
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{\renewcommand{\arraystretch}{0.9} 
+\SingleSpacing
+\ctable[
+  label = tabIbge14,
+  caption = {Total de estabelecimentos, pessoal ocupado, valor da produção e valor da transformação industrial das indústrias metalúrgicas, por Unidade da Federação do Brasil -- 1982}, 
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{L{35mm} Y Y Y Y Y } %  Definição das colunas
+{% notas 
+    \wIbgeFonte{Pesquisa Industrial - 1982--1984. Dados gerais, Brasil. Río de Janeiro: IBGE, v. 9, 410p.}
+    \wIbgeNota{
+      \wIbgeSinaisConvencionais{x, -}
+    }
+   \wIbgeNoteFont % Define a fonte para \tnote
+   \tnote[(1)]{Em 31.12.1982.}
+   \tnote[(2)]{Inclui o valor dos serviços prestados a terceiros e a estabelecimentos da mesma empresa.}
+}
+{ % conteúdo da tabela
+  \FL
+    Unidade da Federação & Total de estabelecimentos &     Pessoal ocupado \tmark[(1)] & Valor da produção (1\,000 Cr\$) \tmark[(2)] & Valor da transformação industrial. (1\,000 Cr\$)
+    \ML
+
+Brasil \dotfill & 8\,452 & 448\,932 & 4\,637\,512 & 646\,043 \\
+\multicolumn{5}{l}{} \\
+Rondônia \dotfill & 1 & x & x & x \\
+Acre \dotfill & 2 & x & x & x \\
+Amazonas \dotfill & 31 & 1\,710 & 21\,585 & 10\,103 \\
+Roraima \dotfill & 2 & x & x & x \\
+Pará \dotfill & 43 & 1\,675 & 6\,492 & 3\,287 \\
+Amapá \dotfill & - & - & - & - \\
+\multicolumn{5}{l}{} \\
+Maranhão \dotfill & 14 & 328 & 498 & 251 \\
+Piauí \dotfill & 12 & 193 & 454 & 159 \\
+Ceará \dotfill & 74 & 5\,336 & 21\,732 & 10\,878 \\
+Rio Grande do Norte \dotfill & 11 & 343 & 1\,267 & 383 \\
+Paraíba \dotfill & 30 & 794 & 2\,089 & 1\,265 \\
+Pernambuco \dotfill & 105 & 5\,171 & 44\,873 & 14\,506 \\
+Alagoas \dotfill & 20 & 439 & 4\,101 & 1\,768 \\
+Sergipe \dotfill & 20 & 423 & 1\,447 & 534 \\
+Bahia \dotfill & 116 & 5\,527 & 89\,072 & 27\,679 \\
+\multicolumn{5}{l}{} \\
+Minas Gerais \dotfill & 736 & 54\,264 & 954\,258 & 306\,856 \\
+Espírito Santo \dotfill & 42 & 2\,281 & 22\,923 & 6\,297 \\
+Rio de Janeiro \dotfill & 847 & 40\,768 & 635\,731 & 177\,358 \\
+São Paulo \dotfill & 4\,699 & 272\,983 & 2\,531\,363 & 939\,032 \\
+\multicolumn{5}{l}{} \\
+Paraná \dotfill & 449 & 11\,188 & 43\,797 & 22\,014 \\
+Santa Catarina \dotfill & 305 & 10\,816 & 84\,294 & 41\,894 \\
+Rio Grande do Sul \dotfill & 706 & 30\,103 & 156\,680 & 74\,316 \\
+\multicolumn{5}{l}{} \\
+Mato Grosso do Sul \dotfill & 29 & 485 & 1\,643 & 623 \\
+Mato Grosso \dotfill & 13 & 528 & 884 & 686 \\
+Goiás \dotfill & 106 & 2\,686 & 9\,860 & 4\,800 \\
+Distrito Federal \dotfill & 28 & 843 & 2\,577 & 1\,301 \LL
+
+}
+\renewcommand{\arraystretch}{1.0} 
+}

@@ -1,2 +1,60 @@
-% data: 
-% tags: 
+% Tabela Modelo 7
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+{\renewcommand{\arraystretch}{0.9} 
+\SingleSpacing
+\ctable[
+  label = tabIbge7,
+  caption = {Preço médio de produtos e serviços selecionados -- INPC, Região Metropolitana de Belém (JUN/DEZ 1989--JUNHO/DEZ 1990)},
+  width = \linewidth, center, pos = !htb, notespar, nosuper
+]
+{X C{15mm} r r r r} %  Definição das colunas
+{% notas
+   \wIbgeFonte{IBGE, Diretoria de Pesquisas, Departamento de Índices de Preços, Sistema Nacional de Índices de Preços ao consumidor.}
+   \wIbgeNota{A partir de março de 1990 o padrão monetário mudou de cruzado novo (NCz\$) para cruzeiro (Cr\$).}
+}
+{ % conteúdo da tabela
+   \FL
+   \multicolumn{1}{R{30mm}|}{\multirow{3}{*}{\parbox{30mm}{Produto e serviço selecionado}}} & \multicolumn{1}{R{15mm}}{\multirow{3}{*}{\parbox{15mm}{Unidade de medida}}} & \multicolumn{4}{|r}{Preço médio} \\ \cmidrule{3-6}
+   \multicolumn{1}{l|}{} && \multicolumn{2}{|r}{1989 (NCz\$)} & \multicolumn{2}{|r}{1990 (NCz\$)} \\ \cmidrule{3-6}
+   \multicolumn{1}{l|}{}&& \multicolumn{1}{|r}{Junho} & \multicolumn{1}{|r}{Dezembro} & \multicolumn{1}{|r}{Junho} & \multicolumn{1}{|r}{Dezembro} \ML
+   \multicolumn{6}{c}{\textbf{Alimentícios}}\\
+   Açúcar refinado  &  kg  &  0,61  &  7,04  &  31,92  &  74,81 \\ 
+   Alface  &  unidade  &  1,16  &  4,20  &  43,12  &  80,69 \\ 
+   Arroz  &  5 kg  &  0,82  &  5,32  &  38,19  &  134,96 \\ 
+   Banana-prata  &  dúzia  &  1,22  &  4,93  &  58,05  &  117,57 \\ 
+   Batata-inglesa  &  kg  &  1,75  &  3,94  &  44,83  &  113,11 \\ 
+   Café moído  &  250 g  &  1,61  &  8,73  &  68,75  &  99,12 \\ 
+   Carne de porco com osso  &  kg  &  5,01  &  29,06  &  205,00  &  421,66 \\ 
+   Carne-seca  &  kg  &  5,82  &  24,48  &  201,38  &  363,46 \\ 
+   Cebola  &  kg  &  0,85  &  7,47  &  129,36  &  62,79 \\ 
+   Cerveja  &  600 ml  &  1,02  &  9,52  &  58,23  &  167,36 \\ 
+   Chá-de-dentro  &  kg  &  6,53  &  29,10  &  237,80  &  420,44 \\ 
+   Farinha de mandioca  &  L  &  0,37  &  2,08  &  16,75  &  61,59 \\ 
+   Feijão (tipo mais comercializado)  &  kg  &  2,10  &  8,61  &  69,60  &  118,49 \\ 
+   Fígado  &  kg  &  5,68  &  22,66  &  166,87  &  359,34 \\ 
+   Frango  &  kg  &  3,44  &  17,09  &  90,30  &  215,79 \\ 
+   Leite em pó integral  &  454 g  &  2,11  &  19,95  &  137,07  &  318,81 \\ 
+   Macarrão sem ovos  &  500 g  &  0,65  &  6,03  &  36,56  &  71,11 \\ 
+   Óleo de soja  &  900 ml  &  1,20  &  6,70  &  49,39  &  117,22 \\ 
+   Ovos  &  dúzia  &  2,41  &  9,35  &  62,52  &  116,60 \\ 
+   Pá com osso  &  kg  &  4,30  &  18,47  &  139,68  &  262,01 \\ 
+   Pão francês  &  200 g  &  0,24  &  2,12  &  13,15  &  27,30 \\ 
+   Peixe corvina  &  kg  &  3,14  &  14,00  &  140,71  &  302,75 \\ 
+   Tomate  &  kg  &  1,23  &  5,57  &  80,52  &  104,51 \\ 
+   \multicolumn{6}{c}{\textbf{Não alimentícios}}\\
+   Álcool combustível  &  L  &  0,46  &  3,84  &  28,60  &  59,07 \\ 
+   Botijão de gás  &  13 kg  &  2,73  &  29,18  &  230,93  &  510,12 \\ 
+   Cigarro  &  maço  &  0,73  &  4,89  &  43,83  &  87,00 \\ 
+   Energia elétrica (consumo médio)  &    &  3,09  &  48,42  &  361,94  &  691,73 \\ 
+   Gasolina  &  L  &  0,62  &  5,11  &  38,00  &  78,65 \\ 
+   Ônibus urbano  &   &  0,17  &  1,34  &  9,12  &  27,50 \\ 
+   Taxa de água e esgoto (consumo médio)  &    &  10,80  &  93,80  &  243,76  &  1\,059,82 \\ 
+   Táxi (corrida padrão)  &    &  2,52  &  24,75  &  144,70  &  420,20 \LL 
+}
+}
+

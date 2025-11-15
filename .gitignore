@@ -1,3 +1,9 @@
+# Ignora todos os arquivos .pdf
+*.pdf
+
+# NÃO ignore o PDF do manual
+!/doc/wIbgeTex-doc.pdf
+
 # Arquivos temporários do LaTeX
 *.aux
 *.log

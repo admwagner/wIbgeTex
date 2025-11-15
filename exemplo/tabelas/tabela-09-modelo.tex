@@ -1,2 +1,31 @@
-% data: 
-% tags: 
+% Tabela Modelo 9
+% Extraída ou adaptada de:
+% IBGE, Fundação Instituto Brasileiro de Geografia e Estatística.
+% Normas de apresentação tabular. 3. ed. Rio de Janeiro: IBGE, 1993.
+%
+% Este arquivo é destinado a ser incluído via \input{}
+
+\ctable[
+  caption = {Número de estabelecimentos agropecuários, pessoal ocupado, número de tratores e efetivo de bovinos, por grupo de densidade do rebanho bovino -- Brasil -- 1975}, 
+  label = tabIbge9,
+  width = \linewidth, center, pos = h, notespar, nosuper
+]
+{X R{15mm} R{15mm} R{15mm} R{15mm}} %  Definição das colunas
+{% notas
+  \wIbgeFonte{IBGE, Diretoria de Pesquisas, Coordenação dos Censos Econômicos, Censo Agropecuário.}
+  \wIbgeNota{Dados sujeitos a retificação.}
+}
+{ % conteúdo da tabela
+  \FL
+  Grupos de densidade do rebanho bovino &
+  \multicolumn{1}{|C{15mm}|}{N. de estabelecimentos} &
+  Pessoal ocupado &
+  \multicolumn{1}{|C{15mm}|}{N. de tratores} &
+  Efetivo de bovinos \ML
+  
+  Total & 5\,834\,779 & 23\,273\,517 & 652\,049 & 127\,643\,292 \\
+  Menos de 15 bovinos por km\textsuperscript{2} & 1\,989\,702 & 7\,817\,021 & 71\,288 & 20\,680\,255 \\
+  15 a menos de 30 bovinos por km\textsuperscript{2} & 1\,298\,248 & 5\,549\,210 & 125\,569 & 25\,039\,093 \\
+  30 a menos de 50 bovinos por km\textsuperscript{2} & 1\,741\,958 & 6\,677\,749 & 258\,611 & 39\,228\,726 \\
+  50 e mais bovinos por kmv & 804\,871 & 3\,229\,537 & 196\,581 & 42\,695\,218 \LL
+}
