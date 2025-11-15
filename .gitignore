@@ -1,0 +1,23 @@
+# Arquivos temporários do LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fdb_latexmk
+*.fls
+
+# Arquivos de backup
+*~
+*.bak
+*.swp
+
+# Diretórios compilados
+build/
+dist/
