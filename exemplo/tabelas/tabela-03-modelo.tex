@@ -5,13 +5,14 @@
 %
 % Este arquivo é destinado a ser incluído via \input{}
 
-{\renewcommand{\arraystretch}{1.1}\setlength{\LTcapwidth}{\linewidth}
+{\renewcommand{\arraystretch}{1.1}
+\setlength{\LTcapwidth}{\linewidth}
 \begin{SingleSpacing}
 % zera o \parskip pois a fonte e notas estão após
 % o longtable como parágrafos normais
 \setlength{\parskip}{0pt}
 
-\begin{longtable}{L{35mm} R{20mm} || L{35mm} R{20mm}}
+\begin{xltabular}{\textwidth}{X R{20mm} || X R{20mm}}
   
   \caption{Taxa de crescimento anual da população residente, em ordem 
     decrescente, por Municípios do Estado de Alagoas, no período 
@@ -97,7 +98,7 @@
   São José da Laje & 0{,}00 & Chã Preta & -1{,}67 \\
   Jacuípe & -0{,}00 & Pindoba & -2{,}93 \\
   Novo Lino & -0{,}06 & & \\
-\end{longtable}
+\end{xltabular}
 
 \wIbgeFonte{Fundação Instituto Brasileiro de Geografia e Estatística (IBGE)}
 \wIbgeNota[Notas]{Dados numéricos arredondados. \par 

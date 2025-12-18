@@ -16,7 +16,11 @@
 % Pacotes básicos e de suporte
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[brazilian]{babel}
+\makeatletter
+\@ifpackageloaded{babel}{}{%
+  \RequirePackage[brazilian]{babel}
+}
+\makeatother
 \RequirePackage{tikz}
 \usetikzlibrary{decorations.pathreplacing,calc}
 \RequirePackage{setspace}
@@ -35,6 +39,7 @@
 \RequirePackage{ctable}
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
+\RequirePackage{xltabular}
 
 % espaçamento, dos símbolos corretos para que 
 % a formatação seja consistente em todo o documento. 
@@ -58,6 +63,8 @@
 \AtBeginEnvironment{tabular}{\wIbgeTabFont}
 \AtBeginEnvironment{longtable}{\wIbgeTabFont}
 \AtBeginEnvironment{tabularx}{\wIbgeTabFont}
+\AtBeginEnvironment{xltabular}{\wIbgeTabFont}
+
 
 % ===================================================================
 %   Comandos e Listas para Notas de Rodapé (Prefixo wIbge)

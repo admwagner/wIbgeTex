@@ -28,3 +28,6 @@
 build/
 dist/
 tmp/
+
+#outros
+criar_pacote_ctan.py
