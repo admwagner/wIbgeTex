@@ -7,7 +7,7 @@
 
 %     Identificação do Pacote
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{wIbgeTex}[2025/11/15 v1.0 Pacote para tabelas IBGE]
+\ProvidesPackage{wIbgeTex}[2025/12/18 v1.1 Pacote para tabelas IBGE]
 
 %     Mensagem de carregamento 
 \PackageInfo{wIbgeTex}{Carregando pacote de tabelas IBGE...}
@@ -17,7 +17,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \makeatletter
-\@ifpackageloaded{babel}{}{%
+\@ifpackageloaded{babel}{}{% teste para não ocorrer erro ao tentar usar dois idiomas
   \RequirePackage[brazilian]{babel}
 }
 \makeatother
