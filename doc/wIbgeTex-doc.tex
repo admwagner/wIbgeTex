@@ -136,7 +136,7 @@ Este documento serve a um propósito estritamente técnico. É fundamental que o
 
 Este capítulo serve como manual de utilização do pacote \texttt{wIbgeTex.sty}, desenvolvido a partir dos exemplos do manual do IBGE.
 
-Nos exemplos, o código \texttt{\string,} (\textit{thin space}) gera um pequeno espaço entre os números, substituindo o ponto utilizado como separador de milhar. Em alguns casos, a vírgula foi colocada entre chaves (como em \texttt{{,}}), a fim de evitar espaço desnecessário.
+Nos exemplos, o código \texttt{\string,} (\textit{thin space}) gera um pequeno espaço entre os números, substituindo o ponto utilizado como separador de milhar. Em alguns casos, a vírgula foi colocada entre chaves (como em \texttt{\{,\}}), para evitar espaço desnecessário.
 
 
 \section{Carregamento e Dependências}
@@ -156,7 +156,7 @@ O pacote \texttt{wIbgeTex.sty} carrega automaticamente todas as dependências ne
 
 \begin{itemize}
 \item \texttt{ctable} e \texttt{booktabs} (para a construção das molduras das tabelas);
-\item \texttt{tabularx} e \texttt{longtable} (para tabelas com largura flexível ou que se estendem por mais de uma página);
+\item \texttt{tabularx}, \texttt{longtable} e \texttt{xltabular} (para tabelas com largura flexível ou que se estendem por mais de uma página);
 \item \texttt{siunitx} (para formatação de números e ângulos);
 \item \texttt{tikz} (para símbolos gráficos);
 \item \texttt{caption} (para formatação das legendas);
@@ -165,7 +165,7 @@ O pacote \texttt{wIbgeTex.sty} carrega automaticamente todas as dependências ne
 
 \textbf{Nota importante:} O pacote \textbf{não} carrega as fontes principais do documento. É necessário carregar, no preâmbulo, as fontes de sua escolha (como \texttt{XCharter} e \texttt{tgheros}). Por exemplo, o ajuste de fontes pode ser feito com:
 
-\begin{quadroBase}[Pacotes Essenciais (Preâmbulo)]
+\begin{quadroBase}[Exemplo de pacotes para fontes (Preâmbulo)]
 {\footnotesize
 	\begin{verbatim}
 \usepackage{XCharter}             % fonte principal Charter 
@@ -180,7 +180,7 @@ O pacote \texttt{wIbgeTex.sty} carrega automaticamente todas as dependências ne
 Quando carregado, o pacote \texttt{wIbgeTex.sty} aplica automaticamente as seguintes regras de formatação do IBGE:
 
 \begin{itemize}
-\item \textbf{Fonte da Tabela:} aplica a fonte definida em \texttt{\string\wIbgeTabFont} (por padrão, \texttt{\string\sffamily\string\footnotesize}) a todos os ambientes \texttt{tabular}, \texttt{tabularx} e \texttt{longtable};
+\item \textbf{Fonte da Tabela:} aplica a fonte definida em \texttt{\string\wIbgeTabFont} (por padrão, \texttt{\string\sffamily\string\footnotesize}) a todos os ambientes \texttt{tabular}, \texttt{tabularx}, \texttt{longtable} e \texttt{xltabular};
 \item \textbf{Legendas (Caption):} configura as legendas para o padrão IBGE, alinhadas à esquerda e com travessão (ex.: \textbf{Tabela 1 \textendash{} Título});
 \item \textbf{Espaçamento de Linha:} ajusta o espaçamento vertical (\texttt{\string\extrarowheight} e \texttt{\string\arraystretch}) para proporcionar maior legibilidade;
 \item \textbf{Bordas da Tabela:} remove os espaços verticais adicionais do \texttt{booktabs} (\texttt{\string\aboverulesep} e \texttt{\string\belowrulesep}), garantindo linhas mais próximas ao texto.
@@ -193,7 +193,7 @@ O pacote fornece um conjunto de comandos com o prefixo \texttt{wIbge} para padro
 
 \subsection{Tipos de Coluna}
 
-O pacote disponibiliza os seguintes tipos de coluna personalizados para uso nos ambientes \texttt{ctable}, \texttt{tabularx}, \texttt{tabular} e \texttt{longtable}:
+O pacote disponibiliza os seguintes tipos de coluna personalizados para uso nos ambientes \texttt{ctable}, \texttt{tabularx}, \texttt{tabular}, \texttt{longtable} e \texttt{xltabular}:
 
 \begin{itemize}
     \item \textbf{Alinhados pela Base (tipo \texttt{b})}
@@ -223,7 +223,7 @@ Estes comandos devem ser utilizados:
 \begin{itemize}
     \item no bloco de notas (\texttt{\{\% notas ... \}}) do \texttt{ctable}, como ocorre na maior parte dos exemplos apresentados;
     \item entre \texttt{\string\end{tabularx}} e \texttt{\string\end{table}}, como na \wautoref{tabIbge2};
-    \item ou após \texttt{\string\end{longtable}}, como na \wautoref{tabIbge3}.
+    \item ou após \texttt{\string\end{longtable}} ou \texttt{\string\end{xltabular}}, como na \wautoref{tabIbge3}.
 \end{itemize}
 
 \begin{quadroBase}[Comandos \texttt{\string\wIbgeFonte} e \texttt{\string\wIbgeNota}]
@@ -644,7 +644,7 @@ Quando, em uma tabela, após o arredondamento de um dado numérico, o resultado 
 
 \begin{itemize}
    
-   \item  \textbf{Quebra de tabelas:} se uma tabela for extensa, ela deve ser dividida. O cabeçalho deve ser repetido em cada nova página. O \texttt{longtable} (usado na \wautoref{tabIbge3}) realiza essa operação automaticamente.
+   \item  \textbf{Quebra de tabelas:} se uma tabela for extensa, ela deve ser dividida. O cabeçalho deve ser repetido em cada nova página. O \texttt{longtable} ou o \texttt{xltabular}  (usado na \wautoref{tabIbge3}) realiza essa operação automaticamente.
 
     
     \item \textbf{Quebra horizontal:} tabelas com muitas colunas e poucas linhas podem ser divididas em blocos, um abaixo do outro, repetindo-se os indicadores de linha (ex.: \wautorefLista{tabIbge2,tabIbge4}).
@@ -668,7 +668,7 @@ Quando, em uma tabela, após o arredondamento de um dado numérico, o resultado 
 
 
   % --- Importa a Tabela 1 ---
-	\input{tabelas/tabela-01-modelo.tex}
+	\input{../exemplo/tabelas/tabela-01-modelo.tex}
 
   \begin{quadroBase}[Código Tabela 1]
   {\footnotesize
